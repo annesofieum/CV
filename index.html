@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anne Sofie Mikkelsen - Product Manager</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 100%);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 3px solid #dc143c;
+        }
+        
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #dc143c;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .nav-button.active {
+            background: linear-gradient(45deg, #dc143c, #ffd700);
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 20, 60, 0.3);
+        }
+        
+        .nav-button.inactive {
+            background: white;
+            color: #333;
+            border: 2px solid #ddd;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .content-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border: 2px solid #f0f0f0;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #dc143c;
+        }
+        
+        .profile-header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #dc143c;
+            text-align: left;
+        }
+        
+        .profile-description {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+            text-align: left;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(45deg, #dc143c, #8b0000);
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .contact-section {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .contact-item {
+            margin-bottom: 10px;
+        }
+        
+        .contact-label {
+            font-weight: bold;
+            color: #dc143c;
+        }
+        
+        .contact-value {
+            color: #666;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .chart-container h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #dc143c;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        #skillChart {
+            width: 100%;
+            height: 400px;
+            cursor: crosshair;
+        }
+
+        .skill-details {
+            background: linear-gradient(45deg, #dc143c, #8b0000);
+            border-radius: 15px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+            text-align: left;
+            padding: 25px;
+            color: white;
+        }
+
+        .skill-details h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-level {
+            background: #ffd700;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .skill-description {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .competency-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .competency-section h4 {
+            color: white;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .competency-section p {
+            color: rgba(255,255,255,0.9);
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .default-message {
+            text-align: left;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+        }
+
+        .default-message h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .experience-item {
+            border: 2px solid #dc143c;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .experience-header {
+            padding: 20px;
+            cursor: pointer;
+            background: white;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .experience-header:hover {
+            background: linear-gradient(45deg, #dc143c, #8b0000);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(220, 20, 60, 0.3);
+        }
+        
+        .experience-header::after {
+            content: "Klik for detaljer";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .experience-header:hover::after {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .experience-title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .experience-company {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .experience-details {
+            padding: 20px;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(45deg, #dc143c, #8b0000);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        .motivation-text {
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .link {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .link:hover {
+            text-decoration: underline;
+        }
+        
+        .skill-point {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .skill-point:hover {
+            stroke-width: 3;
+            filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.6));
+        }
+
+        .skill-label {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .skill-label:hover {
+            font-weight: bold;
+            fill: #ff6b6b;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header .title {
+                font-size: 28px;
+            }
+
+            .skill-details {
+                position: static;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-button {
+                width: 200px;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1 class="title">Product Manager</h1>
+            <p class="subtitle">Anne Sofie Mikkelsen</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-button active" onclick="showSection('profil', this)">Profil</button>
+            <button class="nav-button inactive" onclick="showSection('kompetencer', this)">Kompetencer</button>
+            <button class="nav-button inactive" onclick="showSection('erfaring', this)">Erfaring</button>
+            <button class="nav-button inactive" onclick="showSection('motivation', this)">Motivation</button>
+        </div>
+
+        <!-- Profil Section -->
+        <div id="profil-section" class="content-box">
+            <div class="profile-header">Data-driven produktstrateg med kreativ tilgang og gaming passion</div>
+            <p class="profile-description">
+                Erfaren koordinator med stærk analytisk baggrund og passion for kreative løsninger. 
+                Specialist i produktudvikling, markedsforståelse og tværfagligt samarbejde med fokus på gaming og collectibles.
+                Dedikeret gamer med erfaring fra alt fra MMO's som World of Warcraft til moderne AAA titler på PS5 - lige nu fordybet i Star Wars Outlaws.
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Brands håndteret</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">År erfaring</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">Aktiv</div>
+                    <div class="stat-label">Projektleder kursus</div>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h3 class="section-title">Kontakt</h3>
+                <div class="contact-grid">
+                    <div>
+                        <div class="contact-item">
+                            <span class="contact-label">Email:</span> 
+                            <span class="contact-value">annesofieum@outlook.dk</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Telefon:</span> 
+                            <span class="contact-value">+45 20517479</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="contact-item">
+                            <span class="contact-label">Adresse:</span> 
+                            <span class="contact-value">Højbjerg Huse 36, 8840 Rødkærsbro</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">LinkedIn:</span> 
+                            <a href="https://www.linkedin.com/in/anne-sofie-uhrskov-mikkelsen-7a3349197" 
+                               target="_blank" class="link">Anne Sofie Uhrskov Mikkelsen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kompetencer Section -->
+        <div id="kompetencer-section" class="hidden">
+            <div class="header">
+                <h1 class="profile-header">Kompetence Mapping</h1>
+                <p class="profile-description">Anne Sofie Mikkelsen - Product Manager</p>
+    
+            <div class="main-content">
+                <div class="chart-container">
+                    <h2>Interaktiv Kompetence Radar</h2>
+                    <svg id="skillChart"></svg>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ff6b6b;"></div>
+                            <span>Stærkt niveau</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #666;"></div>
+                            <span>Udviklingsområder</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="skill-details">
+                    <div class="default-message">
+                        <h3>Klik på en kompetence</h3>
+                        <p>Klik på et punkt eller navn i radaren for at se detaljeret information om mine kompetencer og erfaringer.</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Erfaring Section -->
+        <div id="erfaring-section" class="content-box hidden">
+            <h2 class="section-title">Relevante Erfaringer</h2>
+            
+            <div class="experience-item">
+                <div class="experience-header" onclick="toggleExperience('adjutant')">
+                    <div class="experience-title">Marketplace Manager</div>
+                    <div class="experience-company">Adjutant (Mar. 2022 – Nov. 2024) • Høj relevans</div>
+                </div>
+                <div id="adjutant-details" class="experience-details">
+                    <div class="skills-grid">
+                        <div class="skill-tag">Product Strategy</div>
+                        <div class="skill-tag">Market Analysis</div>
+                        <div class="skill-tag">Brand Management</div>
+                    </div>
+                    <p><strong>IT-færdigheder:</strong> Excel, PowerBI, Canva</p>
+                    <p><strong>Gaming relevans:</strong> Håndterede internationale gaming/lifestyle brands</p>
+                    <p>Coordinated product launches and market compliance for 50+ international brands including gaming accessories and lifestyle products. Analyzed market trends and consumer behavior across European markets. Developed strategic insights from sales data to guide product development and positioning decisions - directly applicable to Dragon Shield's global expansion strategy.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header" onclick="toggleExperience('sofie')">
+                    <div class="experience-title">Kreativ Praktikant</div>
+                    <div class="experience-company">Sofie Ladefoged (Jan. 2022 – Mar. 2022) • Medium relevans</div>
+                </div>
+                <div id="sofie-details" class="experience-details">
+                    <div class="skills-grid">
+                        <div class="skill-tag">Creative Direction</div>
+                        <div class="skill-tag">Brand Storytelling</div>
+                        <div class="skill-tag">Community Engagement</div>
+                    </div>
+                    <p><strong>IT-færdigheder:</strong> Photoshop, InDesign, WordPress, Klaviyo, Later</p>
+                    <p><strong>Gaming relevans:</strong> Forstår passionate communities og lifestyle branding</p>
+                    <p>Developed compelling brand narratives and visual content that resonated with dedicated communities. Created engaging content strategies that built authentic connections between brand and customers. This experience directly translates to understanding gaming communities and the passion that drives collectible enthusiasts - key for Dragon Shield's community-focused approach.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header" onclick="toggleExperience('salling')">
+                    <div class="experience-title">Indkøbspraktikant</div>
+                    <div class="experience-company">Salling (Aug. 2020 – Dec. 2020) • Medium relevans</div>
+                </div>
+                <div id="salling-details" class="experience-details">
+                    <div class="skills-grid">
+                        <div class="skill-tag">Product Analysis</div>
+                        <div class="skill-tag">Supply Chain</div>
+                        <div class="skill-tag">Performance Metrics</div>
+                    </div>
+                    <p><strong>IT-færdigheder:</strong> Excel, SAP</p>
+                    <p><strong>Gaming relevans:</strong> Forståelse for collectibles og premium produkter</p>
+                    <p>Analyzed product performance data and optimized assortment strategies for premium consumer products. Collaborated across teams (purchasing, marketing, presentation) to ensure successful product launches. Gained valuable insights into retail dynamics and consumer behavior for specialty products - essential experience for Dragon Shield's premium accessory market.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Motivation Section -->
+        <div id="motivation-section" class="content-box hidden">
+            <h2 class="section-title">Motivation</h2>
+            <div class="motivation-text">
+                <p>
+                    Som dedikeret gamer forstår jeg gaming passion på et dybt, personligt niveau. Fra mine år i World of Warcraft til mine nuværende gaming sessions med Star Wars Outlaws på PS5, har jeg oplevet den dedikation og passion, der driver gaming communities. Denne autentiske forståelse for spillerpsykologi og hvad der skaber værdi for gamere, kombineret med min analytiske baggrund, gør mig til den ideelle kandidat til at udvikle produkter, der virkelig resonerer med Dragon Shield's målgruppe.
+                </p>
+                <p>
+                    Gaming og collectibles har altid fascineret mig - ikke kun som hobbies, men som komplekse markeder hvor passion møder strategi. Når jeg ser Dragon Shield's tilgang til at skabe premium produkter, der både beskytter og forhøjer spilleoplevelsen, ser jeg det perfekte match mellem min analytiske baggrund og ægte kærlighed til gaming kulturen.
+                </p>
+                <p>
+                    Min erfaring med at håndtere 50+ internationale brands har givet mig dybdegående indsigt i, hvordan man balancerer data-drevne beslutninger med forståelse for kundepassion. Jeg forstår vigtigheden af at lytte til community'et, analysere markedstendenser og omsætte feedback til produkter, der virkelig gør en forskel.
+                </p>
+                <p>
+                    Jeg brænder for at være med til at forme den næste generation af gaming accessories. Dragon Shield's mission om at skabe produkter, der forbedrer spilleoplevelsen, kombineret med Collēctīvus Holdings' vækstpotentiale, repræsenterer den perfekte mulighed for at anvende mine kompetencer i en branche, jeg virkelig engagerer mig i.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionName, buttonElement) {
+            var sections = ['profil', 'kompetencer', 'erfaring', 'motivation'];
+            for (var i = 0; i < sections.length; i++) {
+                var sectionElement = document.getElementById(sections[i] + '-section');
+                if (sectionElement) {
+                    sectionElement.style.display = 'none';
+                }
+            }
+
+            var targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.style.display = 'block';
+            }
+
+            var buttons = document.getElementsByClassName('nav-button');
+            for (var j = 0; j < buttons.length; j++) {
+                buttons[j].className = 'nav-button inactive';
+            }
+
+            if (buttonElement) {
+                buttonElement.className = 'nav-button active';
+            }
+        }
+
+        function toggleExperience(experienceId) {
+            var details = document.getElementById(experienceId + '-details');
+            if (details) {
+                if (details.style.display === 'block') {
+                    details.style.display = 'none';
+                } else {
+                    var allDetails = document.getElementsByClassName('experience-details');
+                    for (var k = 0; k < allDetails.length; k++) {
+                        allDetails[k].style.display = 'none';
+                    }
+                    details.style.display = 'block';
+                }
+            }
+        }
+
+        var skills = [
+            {
+                name: "Markedsforståelse",
+                level: 5,
+                description: "Dyb forståelse for markedstendenser og gaming/collectibles community gennem arbejde med internationale brands.",
+                needsDescription: "Evne til at analysere markedstendenser og forstå spilleres behov og passion",
+                contribution: "Erfaring med at arbejde med 50+ brands og analysere forskellige markedssegmenter. Bred indsigt i internationale markeder og kundeadfærd."
+            },
+            {
+                name: "Produktudvikling",
+                level: 4,
+                description: "Struktureret tilgang til produktprocesser og erfaring med at omsætte insights til konkrete produktkoncepter.",
+                needsDescription: "Systematisk produktudvikling fra koncept til markedsføring",
+                contribution: "Erfaring med at koordinere udvikling på tværs af teams og oversætte markedsdata til strategiske beslutninger."
+            },
+            {
+                name: "Dataanalyse",
+                level: 5,
+                description: "Stærk analytisk tilgang med erfaring i at analysere komplekse datasæt og markedstendenser.",
+                needsDescription: "Evne til at indsamle insights gennem surveys, dataplatforme og kundefeedback",
+                contribution: "Erfaring med analyse af salgsdata og markedstendenser fra både Adjutant og Salling. PowerBI og Excel kompetencer til avanceret databehandling."
+            },
+            {
+                name: "Tværfagligt Samarbejde",
+                level: 5,
+                description: "Erfaren koordinator med stærke kommunikationsevner på tværs af funktioner og seniorniveauer.",
+                needsDescription: "Koordinering mellem design, sales, marketing og supply chain",
+                contribution: "Dokumenteret erfaring som bindeled mellem teams og stakeholders. God til at sikre kommunikation og fremdrift på tværs af organisationer."
+            },
+            {
+                name: "Business Cases",
+                level: 3,
+                description: "Grundlæggende forretningsforståelse som udvikles gennem projektleder kursus og praktisk erfaring.",
+                needsDescription: "Evne til at bygge business cases og præsentere produktpitches overbevisende",
+                contribution: "Struktureret tilgang til analyse og igangværende projektleder kursus giver indsigt i business case udvikling. Stor motivation for at udvikle denne kompetence."
+            },
+            {
+                name: "Kreativ Kommunikation",
+                level: 5,
+                description: "Stærk kreativ baggrund med erfaring i storytelling og brand communication.",
+                needsDescription: "Evne til at præsentere produktkoncepter kreativt og inspirerende",
+                contribution: "Kreativ baggrund fra arbejde med Sofie Ladefoged og passion for design. Evne til at formidle komplekse ideer visuelt og engagerende."
+            },
+            {
+                name: "Performance Tracking",
+                level: 3,
+                description: "Udviklingsområde med erfaring i grundlæggende performance måling og optimering.",
+                needsDescription: "Systematisk tracking af produktperformance post-launch og roadmap justering",
+                contribution: "Erfaring med salgsanalyse og procesoptimering. Struktureret tilgang til målsætning og stor motivation for at lære avanceret performance tracking."
+            },
+            {
+                name: "Gaming Passion",
+                level: 5,
+                description: "Ægte gaming enthusiast med bred erfaring på tværs af platforme og genrer - fra World of Warcraft til PS5 titler som Star Wars Outlaws.",
+                needsDescription: "Forståelse for hvad der driver gaming enthusiaster og collectors",
+                contribution: "Personlig gaming erfaring fra MMO's til AAA console titler giver autentisk indsigt i gaming community behov, spillerpsykologi og hvad der skaber passion for gaming accessories og collectibles."
+            }
+        ];
+
+        function drawRadarChart() {
+            var svg = document.getElementById('skillChart');
+            if (!svg) return;
+            
+            svg.setAttribute('viewBox', '0 0 500 500');
+            svg.innerHTML = '';
+            
+            var center = { x: 250, y: 250 };
+            var maxRadius = 170;
+            var levels = 5;
+            var angleStep = (2 * Math.PI) / skills.length;
+            
+            // Draw background circles
+            for (var i = 1; i <= levels; i++) {
+                var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', center.x);
+                circle.setAttribute('cy', center.y);
+                circle.setAttribute('r', (maxRadius / levels) * i);
+                circle.setAttribute('fill', 'none');
+                circle.setAttribute('stroke', '#e0e6ed');
+                circle.setAttribute('stroke-width', '1');
+                svg.appendChild(circle);
+            }
+            
+            // Draw axis lines
+            for (var i = 0; i < skills.length; i++) {
+                var angle = (i * angleStep) - (Math.PI / 2);
+                var x = center.x + Math.cos(angle) * maxRadius;
+                var y = center.y + Math.sin(angle) * maxRadius;
+                
+                var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', center.x);
+                line.setAttribute('y1', center.y);
+                line.setAttribute('x2', x);
+                line.setAttribute('y2', y);
+                line.setAttribute('stroke', '#e0e6ed');
+                line.setAttribute('stroke-width', '1');
+                svg.appendChild(line);
+            }
+            
+            // Draw polygon
+            var points = [];
+            for (var i = 0; i < skills.length; i++) {
+                var angle = (i * angleStep) - (Math.PI / 2);
+                var radius = (skills[i].level / levels) * maxRadius;
+                var x = center.x + Math.cos(angle) * radius;
+                var y = center.y + Math.sin(angle) * radius;
+                points.push(x + ',' + y);
+            }
+            
+            var polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+            polygon.setAttribute('points', points.join(' '));
+            polygon.setAttribute('fill', 'rgba(255, 107, 107, 0.2)');
+            polygon.setAttribute('stroke', '#ff6b6b');
+            polygon.setAttribute('stroke-width', '2');
+            svg.appendChild(polygon);
+            
+            // Draw points and labels
+            for (var i = 0; i < skills.length; i++) {
+                var skill = skills[i];
+                var angle = (i * angleStep) - (Math.PI / 2);
+                var radius = (skill.level / levels) * maxRadius;
+                var x = center.x + Math.cos(angle) * radius;
+                var y = center.y + Math.sin(angle) * radius;
+                
+                var point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                point.setAttribute('cx', x);
+                point.setAttribute('cy', y);
+                point.setAttribute('r', skill.level >= 4 ? '8' : '6');
+                point.setAttribute('fill', skill.level >= 4 ? '#ff6b6b' : '#666');
+                point.setAttribute('stroke', 'white');
+                point.setAttribute('stroke-width', '2');
+                point.classList.add('skill-point');
+                point.onclick = (function(s) { return function() { showSkillDetails(s); }; })(skill);
+                svg.appendChild(point);
+                
+                var labelRadius = maxRadius + 30;
+                var labelX = center.x + Math.cos(angle) * labelRadius;
+                var labelY = center.y + Math.sin(angle) * labelRadius;
+                
+                var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', labelX);
+                text.setAttribute('y', labelY);
+                text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
+                text.setAttribute('dominant-baseline', 'middle');
+                text.setAttribute('font-size', '12');
+                text.setAttribute('fill', '#333');
+                text.setAttribute('font-weight', '600');
+                text.classList.add('skill-label');
+                text.textContent = skill.name;
+                text.onclick = (function(s) { return function() { showSkillDetails(s); }; })(skill);
+                svg.appendChild(text);
+            }
+        }
+
+        function showSkillDetails(skill) {
+            var levelNames = ['', 'Begynder', 'Grundlæggende', 'Kompetent', 'Erfaren', 'Ekspert'];
+            var skillDetails = document.querySelector('.skill-details');
+            
+            if (skillDetails) {
+                skillDetails.innerHTML = 
+                    '<h3>' + skill.name + ' <span class="skill-level">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></h3>' +
+                    '<p class="skill-description">' + skill.description + '</p>' +
+                    '<div class="competency-section">' +
+                        '<h4>Dragon Shield har brug for:</h4>' +
+                        '<p>' + skill.needsDescription + '</p>' +
+                    '</div>' +
+                    '<div class="competency-section">' +
+                        '<h4>Dette kan jeg bidrage med:</h4>' +
+                        '<p>' + skill.contribution + '</p>' +
+                    '</div>';
+            }
+        }
+
+        window.onload = function() {
+            var sections = ['kompetencer', 'erfaring', 'motivation'];
+            for (var i = 0; i < sections.length; i++) {
+                var sectionElement = document.getElementById(sections[i] + '-section');
+                if (sectionElement) {
+                    sectionElement.style.display = 'none';
+                }
+            }
+            
+            var profilSection = document.getElementById('profil-section');
+            if (profilSection) {
+                profilSection.style.display = 'block';
+            }
+            
+            var buttons = document.getElementsByClassName('nav-button');
+            for (var j = 0; j < buttons.length; j++) {
+                if (j === 0) {
+                    buttons[j].className = 'nav-button active';
+                } else {
+                    buttons[j].className = 'nav-button inactive';
+                }
+            }
+            
+            // Draw the radar chart
+            drawRadarChart();
+        };
+    </script>
+</body>
+</html>
