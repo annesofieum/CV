@@ -528,21 +528,32 @@
         <div id="competencies-section" class="content-box hidden">
             <div class="profile-header">Competency Mapping</div>
             <p class="profile-description">
-                Interactive visualization of my skills and competencies relevant for the Product Manager role at Dragon Shield.
+                Interactive visualization of my skills and competencies relevant for the Product Manager role.
             </p>
             
             <div class="main-content">
                 <div class="chart-container">
-                    <h3>Interactive Competency Radar</h3>
+                    <h3>Adventurer Skill Chart</h3>
                     <svg id="skillChart"></svg>
                     <div class="legend">
                         <div class="legend-item">
                             <div class="legend-color" style="background: #ffd700;"></div>
-                            <span>Strong level</span>
+                            <span>Strong level (Pro/Boss Level)</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #666;"></div>
                             <span>Development areas</span>
+                        </div>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; border-radius: 8px; padding: 15px; margin-top: 20px; font-size: 14px;">
+                        <h4 style="margin: 0 0 10px 0; color: #dc143c;">Skill Levels:</h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px;">
+                            <span><strong>Level 1:</strong> Noob</span>
+                            <span><strong>Level 2:</strong> Getting There</span>
+                            <span><strong>Level 3:</strong> Competent</span>
+                            <span><strong>Level 4:</strong> Pro</span>
+                            <span><strong>Level 5:</strong> Boss Level</span>
                         </div>
                     </div>
                 </div>
@@ -687,7 +698,7 @@
             },
             {
                 name: "Data Analysis",
-                level: 5,
+                level: 4,
                 description: "Strong analytical approach with experience analyzing complex datasets and market trends.",
                 needsDescription: "Ability to gather insights through surveys, data platforms and customer feedback",
                 contribution: "Experience with sales data analysis and market trends from both Adjutant and Salling. PowerBI and Excel skills for advanced data processing."
@@ -701,7 +712,7 @@
             },
             {
                 name: "Creative Communication",
-                level: 5,
+                level: 4,
                 description: "Strong creative background with experience in storytelling and brand communication.",
                 needsDescription: "Ability to present product concepts creatively and inspiringly",
                 contribution: "Creative background from work with Sofie Ladefoged and passion for design. Ability to communicate complex ideas visually and engagingly."
@@ -839,7 +850,7 @@
         }
 
         function showSkillDetails(skill) {
-            var levelNames = ['', 'Beginner', 'Basic', 'Competent', 'Experienced', 'Expert'];
+            var levelNames = ['', 'Noob', 'Getting There', 'Competent', 'Pro', 'Boss Level'];
             var skillDetails = document.querySelector('.skill-details');
             
             if (skillDetails) {
