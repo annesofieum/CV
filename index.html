@@ -450,13 +450,11 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <h1 class="title">🐲 Product Manager 🛡️</h1>
             <p class="subtitle">Anne Sofie Mikkelsen</p>
         </div>
 
-        <!-- Navigation -->
         <div class="navigation">
             <button class="nav-button active" onclick="showSection('profile', this)">Profile</button>
             <button class="nav-button inactive" onclick="showSection('competencies', this)">Competencies</button>
@@ -464,7 +462,6 @@
             <button class="nav-button inactive" onclick="showSection('motivation', this)">Motivation</button>
         </div>
 
-        <!-- Profile Section -->
         <div id="profile-section" class="content-box">
             <div class="profile-header">Data-driven product strategist with creative approach and gaming passion</div>
             <p class="profile-description">
@@ -528,13 +525,14 @@
             </div>
         </div>
 
-        <!-- Competencies Section -->
-        <div id="competencies-section" class="content-box hidden">
-            <h2 class="section-title">Competency Mapping</h2>
-            
+        <div id="competencies-section" class="hidden">
+            <div class="header">
+                <h1 class="profile-header">Competency Mapping</h1>
+                <p class="profile-description">Anne Sofie Mikkelsen - Product Manager</p>
+    
             <div class="main-content">
                 <div class="chart-container">
-                    <h3>Interactive Competency Radar</h3>
+                    <h2>Interactive Competency Radar</h2>
                     <svg id="skillChart"></svg>
                     <div class="legend">
                         <div class="legend-item">
@@ -555,9 +553,9 @@
                     </div>
                 </div>
             </div>
+            </div>
         </div>
 
-        <!-- Experience Section -->
         <div id="experience-section" class="content-box hidden">
             <h2 class="section-title">Relevant Experience</h2>
             
@@ -610,7 +608,6 @@
             </div>
         </div>
 
-        <!-- Motivation Section -->
         <div id="motivation-section" class="content-box hidden">
             <h2 class="section-title">Motivation</h2>
             <div class="motivation-text">
@@ -751,12 +748,12 @@
                 circle.setAttribute('stroke-width', '1');
                 svg.appendChild(circle);
             }
-            
+
             for (var i = 0; i < skills.length; i++) {
                 var angle = (i * angleStep) - (Math.PI / 2);
                 var x = center.x + Math.cos(angle) * maxRadius;
                 var y = center.y + Math.sin(angle) * maxRadius;
-                
+
                 var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
                 line.setAttribute('x1', center.x);
                 line.setAttribute('y1', center.y);
@@ -766,7 +763,17 @@
                 line.setAttribute('stroke-width', '1');
                 svg.appendChild(line);
             }
-            
+
+            for (var i = 1; i <= levels; i++) {
+                var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', center.x + 5);
+                text.setAttribute('y', center.y - (maxRadius / levels) * i + 5);
+                text.setAttribute('font-size', '12');
+                text.setAttribute('fill', '#666');
+                text.textContent = i;
+                svg.appendChild(text);
+            }
+
             var points = [];
             for (var i = 0; i < skills.length; i++) {
                 var angle = (i * angleStep) - (Math.PI / 2);
@@ -775,21 +782,21 @@
                 var y = center.y + Math.sin(angle) * radius;
                 points.push(x + ',' + y);
             }
-            
+
             var polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
             polygon.setAttribute('points', points.join(' '));
             polygon.setAttribute('fill', 'rgba(255, 215, 0, 0.2)');
             polygon.setAttribute('stroke', '#ffd700');
             polygon.setAttribute('stroke-width', '2');
             svg.appendChild(polygon);
-            
+
             for (var i = 0; i < skills.length; i++) {
                 var skill = skills[i];
                 var angle = (i * angleStep) - (Math.PI / 2);
                 var radius = (skill.level / levels) * maxRadius;
                 var x = center.x + Math.cos(angle) * radius;
                 var y = center.y + Math.sin(angle) * radius;
-                
+
                 var point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                 point.setAttribute('cx', x);
                 point.setAttribute('cy', y);
@@ -798,13 +805,14 @@
                 point.setAttribute('stroke', 'white');
                 point.setAttribute('stroke-width', '2');
                 point.classList.add('skill-point');
-                point.onclick = (function(s) { return function() { showSkillDetails(s); }; })(skill);
+                point.skillData = skill;
+                point.onclick = function() { showSkillDetails(this.skillData); };
                 svg.appendChild(point);
-                
+
                 var labelRadius = maxRadius + 30;
                 var labelX = center.x + Math.cos(angle) * labelRadius;
                 var labelY = center.y + Math.sin(angle) * labelRadius;
-                
+
                 var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
                 text.setAttribute('x', labelX);
                 text.setAttribute('y', labelY);
@@ -812,10 +820,10 @@
                 text.setAttribute('dominant-baseline', 'middle');
                 text.setAttribute('font-size', '12');
                 text.setAttribute('fill', '#333');
-                text.setAttribute('font-weight', '600');
                 text.classList.add('skill-label');
                 text.textContent = skill.name;
-                text.onclick = (function(s) { return function() { showSkillDetails(s); }; })(skill);
+                text.skillData = skill;
+                text.onclick = function() { showSkillDetails(this.skillData); };
                 svg.appendChild(text);
             }
         }
