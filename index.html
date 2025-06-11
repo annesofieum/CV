@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -207,7 +207,7 @@
 
         .skill-level {
             background: #ffd700;
-            color: white;
+            color: #000;
             padding: 5px 15px;
             border-radius: 20px;
             font-size: 12px;
@@ -299,7 +299,7 @@
         }
         
         .experience-header::after {
-            content: "Klik for detaljer";
+            content: "Click for details";
             position: absolute;
             right: 20px;
             top: 50%;
@@ -353,13 +353,37 @@
             line-height: 1.7;
             margin-bottom: 20px;
         }
+
+        .languages-section {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 30px;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .language-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .language-level {
+            color: #666;
+            font-size: 14px;
+        }
         
         .hidden {
             display: none;
         }
         
         .link {
-            color: #667eea;
+            color: #dc143c;
             text-decoration: none;
         }
         
@@ -374,7 +398,7 @@
 
         .skill-point:hover {
             stroke-width: 3;
-            filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.6));
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
         }
 
         .skill-label {
@@ -384,7 +408,7 @@
 
         .skill-label:hover {
             font-weight: bold;
-            fill: #ff6b6b;
+            fill: #ffd700;
         }
         
         @media (max-width: 768px) {
@@ -428,44 +452,44 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1 class="title">Product Manager</h1>
+            <h1 class="title">🐲 Product Manager 🛡️</h1>
             <p class="subtitle">Anne Sofie Mikkelsen</p>
         </div>
 
         <!-- Navigation -->
         <div class="navigation">
-            <button class="nav-button active" onclick="showSection('profil', this)">Profil</button>
-            <button class="nav-button inactive" onclick="showSection('kompetencer', this)">Kompetencer</button>
-            <button class="nav-button inactive" onclick="showSection('erfaring', this)">Erfaring</button>
+            <button class="nav-button active" onclick="showSection('profile', this)">Profile</button>
+            <button class="nav-button inactive" onclick="showSection('competencies', this)">Competencies</button>
+            <button class="nav-button inactive" onclick="showSection('experience', this)">Experience</button>
             <button class="nav-button inactive" onclick="showSection('motivation', this)">Motivation</button>
         </div>
 
-        <!-- Profil Section -->
-        <div id="profil-section" class="content-box">
-            <div class="profile-header">Data-driven produktstrategi med kreativ tilgang og gaming passion</div>
+        <!-- Profile Section -->
+        <div id="profile-section" class="content-box">
+            <div class="profile-header">Data-driven product strategist with creative approach and gaming passion</div>
             <p class="profile-description">
-                Erfaren koordinator med stærk analytisk baggrund og passion for kreative løsninger. 
-                Specialist i markedsforståelse, dataanalyse og tværfagligt samarbejde med motivation for produktudvikling inden for gaming og collectibles.
-                Dedikeret gamer med erfaring fra alt fra MMO's som World of Warcraft til moderne AAA titler på PS5 - lige nu fordybet i Star Wars Outlaws.
+                Experienced coordinator with strong analytical background and passion for creative solutions. 
+                Specialist in market understanding, data analysis, and cross-functional collaboration with motivation for product development within gaming and collectibles.
+                Dedicated gamer with experience ranging from MMOs like World of Warcraft to modern AAA titles on PS5 - currently immersed in Star Wars Outlaws.
             </p>
             
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">50+</div>
-                    <div class="stat-label">Brands håndteret</div>
+                    <div class="stat-label">Brands managed</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">3</div>
-                    <div class="stat-label">År erfaring</div>
+                    <div class="stat-label">Years experience</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">Aktiv</div>
-                    <div class="stat-label">Projektleder kursus</div>
+                    <div class="stat-number">Active</div>
+                    <div class="stat-label">Project Management course</div>
                 </div>
             </div>
 
             <div class="contact-section">
-                <h3 class="section-title">Kontakt</h3>
+                <h3 class="section-title">Contact</h3>
                 <div class="contact-grid">
                     <div>
                         <div class="contact-item">
@@ -473,14 +497,14 @@
                             <span class="contact-value">annesofieum@outlook.dk</span>
                         </div>
                         <div class="contact-item">
-                            <span class="contact-label">Telefon:</span> 
+                            <span class="contact-label">Phone:</span> 
                             <span class="contact-value">+45 20517479</span>
                         </div>
                     </div>
                     <div>
                         <div class="contact-item">
-                            <span class="contact-label">Adresse:</span> 
-                            <span class="contact-value">Højbjerg Huse 36, 8840 Rødkærsbro</span>
+                            <span class="contact-label">Address:</span> 
+                            <span class="contact-value">Højbjerg Huse 36, 8840 Rødkærsbro, Denmark</span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-label">LinkedIn:</span> 
@@ -490,92 +514,101 @@
                     </div>
                 </div>
             </div>
+
+            <div class="languages-section">
+                <h3 class="section-title">Languages</h3>
+                <div class="language-item">
+                    <span class="language-name">Danish</span>
+                    <span class="language-level">Native</span>
+                </div>
+                <div class="language-item">
+                    <span class="language-name">English</span>
+                    <span class="language-level">Fluent</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Kompetencer Section -->
-        <div id="kompetencer-section" class="hidden">
+        <!-- Competencies Section -->
+        <div id="competencies-section" class="hidden">
             <div class="header">
-                <h1 class="profile-header">Kompetence Mapping</h1>
+                <h1 class="profile-header">Competency Mapping</h1>
                 <p class="profile-description">Anne Sofie Mikkelsen - Product Manager</p>
     
             <div class="main-content">
                 <div class="chart-container">
-                    <h2>Interaktiv Kompetence Radar</h2>
+                    <h2>Interactive Competency Radar</h2>
                     <svg id="skillChart"></svg>
                     <div class="legend">
                         <div class="legend-item">
-                            <div class="legend-color" style="background: #ff6b6b;"></div>
-                            <span>Stærkt niveau</span>
+                            <div class="legend-color" style="background: #ffd700;"></div>
+                            <span>Strong level</span>
                         </div>
                         <div class="legend-item">
                             <div class="legend-color" style="background: #666;"></div>
-                            <span>Udviklingsområder</span>
+                            <span>Development areas</span>
                         </div>
                     </div>
                 </div>
     
                 <div class="skill-details">
                     <div class="default-message">
-                        <h3>Klik på en kompetence</h3>
-                        <p>Klik på et punkt eller navn i radaren for at se detaljeret information om mine kompetencer og erfaringer.</p>
+                        <h3>Click on a competency</h3>
+                        <p>Click on a point or name in the radar to see detailed information about my competencies and experience.</p>
                     </div>
                 </div>
             </div>
             </div>
         </div>
 
-        <!-- Erfaring Section -->
-        <div id="erfaring-section" class="content-box hidden">
-            <h2 class="section-title">Relevante Erfaringer</h2>
+        <!-- Experience Section -->
+        <div id="experience-section" class="content-box hidden">
+            <h2 class="section-title">Relevant Experience</h2>
             
             <div class="experience-item">
                 <div class="experience-header" onclick="toggleExperience('adjutant')">
                     <div class="experience-title">Marketplace Manager</div>
-                    <div class="experience-company">Adjutant (Mar. 2022 – Nov. 2024) • Høj relevans</div>
+                    <div class="experience-company">Adjutant (Mar. 2022 – Nov. 2024) • High relevance</div>
                 </div>
                 <div id="adjutant-details" class="experience-details">
                     <div class="skills-grid">
-                        <div class="skill-tag">Product Strategy</div>
-                        <div class="skill-tag">Market Analysis</div>
-                        <div class="skill-tag">Brand Management</div>
+                        <div class="skill-tag">Stakeholder Management</div>
+                        <div class="skill-tag">Data Analysis</div>
+                        <div class="skill-tag">Process Management</div>
                     </div>
-                    <p><strong>IT-færdigheder:</strong> Excel, PowerBI, Canva</p>
-                    <p><strong>Gaming relevans:</strong> Håndterede internationale gaming/lifestyle brands</p>
-                    <p>Coordinated product launches and market compliance for 50+ international brands including gaming accessories and lifestyle products. Analyzed market trends and consumer behavior across European markets. Developed strategic insights from sales data to guide product development and positioning decisions - directly applicable to Dragon Shield's global expansion strategy.</p>
+                    <p><strong>Technical skills:</strong> Excel, PowerBI, Canva</p>
+                    <p><strong>Transferable to Product Management:</strong> Managed 50+ international brands simultaneously, requiring prioritization, stakeholder coordination, and data-driven decision making. Analyzed market trends and performance metrics to support strategic decisions - core skills for product roadmap planning and market positioning.</p>
                 </div>
             </div>
 
             <div class="experience-item">
                 <div class="experience-header" onclick="toggleExperience('sofie')">
-                    <div class="experience-title">Kreativ Praktikant</div>
-                    <div class="experience-company">Sofie Ladefoged (Jan. 2022 – Mar. 2022) • Medium relevans</div>
+                    <div class="experience-title">Creative Intern</div>
+                    <div class="experience-company">Sofie Ladefoged (Jan. 2022 – Mar. 2022) • Medium relevance</div>
                 </div>
                 <div id="sofie-details" class="experience-details">
                     <div class="skills-grid">
-                        <div class="skill-tag">Creative Direction</div>
-                        <div class="skill-tag">Brand Storytelling</div>
-                        <div class="skill-tag">Community Engagement</div>
+                        <div class="skill-tag">Content Creation</div>
+                        <div class="skill-tag">Storytelling</div>
+                        <div class="skill-tag">Brand Communication</div>
                     </div>
-                    <p><strong>IT-færdigheder:</strong> Photoshop, InDesign, WordPress, Klaviyo, Later</p>
-                    <p><strong>Gaming relevans:</strong> Forstår passionate communities og lifestyle branding</p>
-                    <p>Developed compelling brand narratives and visual content that resonated with dedicated communities. Created engaging content strategies that built authentic connections between brand and customers. This experience directly translates to understanding gaming communities and the passion that drives collectible enthusiasts - key for Dragon Shield's community-focused approach.</p>
+                    <p><strong>Technical skills:</strong> Photoshop, InDesign, WordPress, Klaviyo, Later</p>
+                    <p><strong>Transferable to Product Management:</strong> Developed compelling brand narratives and understood how to communicate product value to target audiences. Experience in translating brand vision into tangible content - essential for product positioning and go-to-market strategies.</p>
                 </div>
             </div>
 
             <div class="experience-item">
                 <div class="experience-header" onclick="toggleExperience('salling')">
-                    <div class="experience-title">Indkøbspraktikant</div>
-                    <div class="experience-company">Salling (Aug. 2020 – Dec. 2020) • Medium relevans</div>
+                    <div class="experience-title">Purchasing Intern</div>
+                    <div class="experience-company">Salling (Aug. 2020 – Dec. 2020) • Medium relevance</div>
                 </div>
                 <div id="salling-details" class="experience-details">
                     <div class="skills-grid">
-                        <div class="skill-tag">Product Analysis</div>
-                        <div class="skill-tag">Supply Chain</div>
-                        <div class="skill-tag">Performance Metrics</div>
+                        <div class="skill-tag">Sales Analysis</div>
+                        <div class="skill-tag">Vendor Relations</div>
+                        <div class="skill-tag">Market Understanding</div>
                     </div>
-                    <p><strong>IT-færdigheder:</strong> Excel, SAP</p>
-                    <p><strong>Gaming relevans:</strong> Forståelse for collectibles og premium produkter</p>
-                    <p>Analyzed product performance data and optimized assortment strategies for premium consumer products. Collaborated across teams (purchasing, marketing, presentation) to ensure successful product launches. Gained valuable insights into retail dynamics and consumer behavior for specialty products - essential experience for Dragon Shield's premium accessory market.</p>
+                    <p><strong>Technical skills:</strong> Excel, SAP</p>
+                    <p><strong>Transferable to Product Management:</strong> Analyzed sales data to optimize product assortment and collaborated across purchasing, marketing, and presentation teams. Gained insights into retail dynamics and customer behavior - valuable for understanding product performance and market fit.</p>
                 </div>
             </div>
         </div>
@@ -585,16 +618,16 @@
             <h2 class="section-title">Motivation</h2>
             <div class="motivation-text">
                 <p>
-                    Som dedikeret gamer forstår jeg gaming passion på et dybt, personligt niveau. Fra mine år i World of Warcraft til mine nuværende gaming sessions med Star Wars Outlaws på PS5, har jeg oplevet den dedikation og passion, der driver gaming communities. Denne autentiske forståelse for spillerpsykologi og hvad der skaber værdi for gamere, kombineret med min analytiske baggrund, gør mig til den ideelle kandidat til at udvikle produkter, der virkelig resonerer med Dragon Shield's målgruppe.
+                    As a dedicated gamer, I understand gaming passion at a deep, personal level. From my years in World of Warcraft to my current gaming sessions with Star Wars Outlaws on PS5, I've experienced the dedication and passion that drives gaming communities. This authentic understanding of player psychology and what creates value for gamers, combined with my analytical background, makes me the ideal candidate to develop products that truly resonate with Dragon Shield's target audience.
                 </p>
                 <p>
-                    Gaming og collectibles har altid fascineret mig - ikke kun som hobbies, men som komplekse markeder hvor passion møder strategi. Når jeg ser Dragon Shield's tilgang til at skabe premium produkter, der både beskytter og forhøjer spilleoplevelsen, ser jeg det perfekte match mellem min analytiske baggrund og ægte kærlighed til gaming kulturen.
+                    Gaming and collectibles have always fascinated me - not just as hobbies, but as complex markets where passion meets strategy. When I see Dragon Shield's approach to creating premium products that both protect and enhance the gaming experience, I see the perfect match between my analytical background and genuine love for gaming culture.
                 </p>
                 <p>
-                    Min erfaring med at håndtere 50+ internationale brands har givet mig dybdegående indsigt i, hvordan man balancerer data-drevne beslutninger med forståelse for kundepassion. Jeg forstår vigtigheden af at lytte til community'et, analysere markedstendenser og omsætte feedback til produkter, der virkelig gør en forskel.
+                    My experience handling 50+ international brands has given me deep insight into how to balance data-driven decisions with understanding customer passion. I understand the importance of listening to the community, analyzing market trends, and translating feedback into products that make a real difference.
                 </p>
                 <p>
-                    Jeg brænder for at være med til at forme den næste generation af gaming accessories. Dragon Shield's mission om at skabe produkter, der forbedrer spilleoplevelsen, kombineret med Collēctīvus Holdings' vækstpotentiale, repræsenterer den perfekte mulighed for at anvende mine kompetencer i en branche, jeg virkelig engagerer mig i.
+                    I'm passionate about helping shape the next generation of gaming accessories. Dragon Shield's mission to create products that improve the gaming experience, combined with Collēctīvus Holdings' growth potential, represents the perfect opportunity to apply my skills in an industry I'm genuinely engaged in.
                 </p>
             </div>
         </div>
@@ -602,7 +635,7 @@
 
     <script>
         function showSection(sectionName, buttonElement) {
-            var sections = ['profil', 'kompetencer', 'erfaring', 'motivation'];
+            var sections = ['profile', 'competencies', 'experience', 'motivation'];
             for (var i = 0; i < sections.length; i++) {
                 var sectionElement = document.getElementById(sections[i] + '-section');
                 if (sectionElement) {
@@ -642,60 +675,60 @@
 
         var skills = [
             {
-                name: "Markedsforståelse",
+                name: "Market Understanding",
                 level: 5,
-                description: "Dyb forståelse for markedstendenser og gaming/collectibles community gennem arbejde med internationale brands.",
-                needsDescription: "Evne til at analysere markedstendenser og forstå spilleres behov og passion",
-                contribution: "Erfaring med at arbejde med 50+ brands og analysere forskellige markedssegmenter. Bred indsigt i internationale markeder og kundeadfærd."
+                description: "Deep understanding of market trends and customer behavior through work with international brands.",
+                needsDescription: "Ability to analyze market trends and understand player needs and passion",
+                contribution: "Experience working with 50+ brands analyzing different market segments. Broad insight into international markets and customer behavior."
             },
             {
-                name: "Produktudvikling",
-                level: 4,
-                description: "Struktureret tilgang til produktprocesser og erfaring med at omsætte insights til konkrete produktkoncepter.",
-                needsDescription: "Systematisk produktudvikling fra koncept til markedsføring",
-                contribution: "Erfaring med at koordinere udvikling på tværs af teams og oversætte markedsdata til strategiske beslutninger."
+                name: "Data Analysis",
+                level: 5,
+                description: "Strong analytical approach with experience analyzing complex datasets and market trends.",
+                needsDescription: "Ability to gather insights through surveys, data platforms and customer feedback",
+                contribution: "Experience with sales data analysis and market trends from both Adjutant and Salling. PowerBI and Excel skills for advanced data processing."
             },
             {
-                name: "Dataanalyse",
+                name: "Cross-functional Collaboration",
                 level: 5,
-                description: "Stærk analytisk tilgang med erfaring i at analysere komplekse datasæt og markedstendenser.",
-                needsDescription: "Evne til at indsamle insights gennem surveys, dataplatforme og kundefeedback",
-                contribution: "Erfaring med analyse af salgsdata og markedstendenser fra både Adjutant og Salling. PowerBI og Excel kompetencer til avanceret databehandling."
+                description: "Experienced coordinator with strong communication skills across functions and seniority levels.",
+                needsDescription: "Coordination between design, sales, marketing and supply chain",
+                contribution: "Proven experience as liaison between teams and stakeholders. Good at ensuring communication and progress across organizations."
             },
             {
-                name: "Tværfagligt Samarbejde",
+                name: "Creative Communication",
                 level: 5,
-                description: "Erfaren koordinator med stærke kommunikationsevner på tværs af funktioner og seniorniveauer.",
-                needsDescription: "Koordinering mellem design, sales, marketing og supply chain",
-                contribution: "Dokumenteret erfaring som bindeled mellem teams og stakeholders. God til at sikre kommunikation og fremdrift på tværs af organisationer."
+                description: "Strong creative background with experience in storytelling and brand communication.",
+                needsDescription: "Ability to present product concepts creatively and inspiringly",
+                contribution: "Creative background from work with Sofie Ladefoged and passion for design. Ability to communicate complex ideas visually and engagingly."
+            },
+            {
+                name: "Product Development",
+                level: 3,
+                description: "Developing understanding of product processes through project management course and transferable skills.",
+                needsDescription: "Systematic product development from concept to marketing",
+                contribution: "Experience coordinating development across teams and translating market data into strategic decisions. Currently building formal PM skills through coursework."
             },
             {
                 name: "Business Cases",
                 level: 3,
-                description: "Grundlæggende forretningsforståelse som udvikles gennem projektleder kursus og praktisk erfaring.",
-                needsDescription: "Evne til at bygge business cases og præsentere produktpitches overbevisende",
-                contribution: "Struktureret tilgang til analyse og igangværende projektleder kursus giver indsigt i business case udvikling. Stor motivation for at udvikle denne kompetence."
-            },
-            {
-                name: "Kreativ Kommunikation",
-                level: 5,
-                description: "Stærk kreativ baggrund med erfaring i storytelling og brand communication.",
-                needsDescription: "Evne til at præsentere produktkoncepter kreativt og inspirerende",
-                contribution: "Kreativ baggrund fra arbejde med Sofie Ladefoged og passion for design. Evne til at formidle komplekse ideer visuelt og engagerende."
+                description: "Basic business understanding developing through project management course and practical experience.",
+                needsDescription: "Ability to build business cases and present product pitches convincingly",
+                contribution: "Structured approach to analysis and ongoing project management course provides insight into business case development. Strong motivation to develop this competency."
             },
             {
                 name: "Performance Tracking",
                 level: 3,
-                description: "Udviklingsområde med erfaring i grundlæggende performance måling og optimering.",
-                needsDescription: "Systematisk tracking af produktperformance post-launch og roadmap justering",
-                contribution: "Erfaring med salgsanalyse og procesoptimering. Struktureret tilgang til målsætning og stor motivation for at lære avanceret performance tracking."
+                description: "Development area with experience in basic performance measurement and optimization.",
+                needsDescription: "Systematic tracking of product performance post-launch and roadmap adjustment",
+                contribution: "Experience with sales analysis and process optimization. Structured approach to goal setting and strong motivation to learn advanced performance tracking."
             },
             {
                 name: "Gaming Passion",
                 level: 5,
-                description: "Ægte gaming enthusiast med bred erfaring på tværs af platforme og genrer - fra World of Warcraft til PS5 titler som Star Wars Outlaws.",
-                needsDescription: "Forståelse for hvad der driver gaming enthusiaster og collectors",
-                contribution: "Personlig gaming erfaring fra MMO's til AAA console titler giver autentisk indsigt i gaming community behov, spillerpsykologi og hvad der skaber passion for gaming accessories og collectibles."
+                description: "Genuine gaming enthusiast with broad experience across platforms and genres - from World of Warcraft to PS5 titles like Star Wars Outlaws.",
+                needsDescription: "Understanding of what drives gaming enthusiasts and collectors",
+                contribution: "Personal gaming experience from MMOs to AAA console titles provides authentic insight into gaming community needs, player psychology and what creates passion for gaming accessories and collectibles."
             }
         ];
 
@@ -751,8 +784,8 @@
             
             var polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
             polygon.setAttribute('points', points.join(' '));
-            polygon.setAttribute('fill', 'rgba(255, 107, 107, 0.2)');
-            polygon.setAttribute('stroke', '#ff6b6b');
+            polygon.setAttribute('fill', 'rgba(255, 215, 0, 0.2)');
+            polygon.setAttribute('stroke', '#ffd700');
             polygon.setAttribute('stroke-width', '2');
             svg.appendChild(polygon);
             
@@ -768,7 +801,7 @@
                 point.setAttribute('cx', x);
                 point.setAttribute('cy', y);
                 point.setAttribute('r', skill.level >= 4 ? '8' : '6');
-                point.setAttribute('fill', skill.level >= 4 ? '#ff6b6b' : '#666');
+                point.setAttribute('fill', skill.level >= 4 ? '#ffd700' : '#666');
                 point.setAttribute('stroke', 'white');
                 point.setAttribute('stroke-width', '2');
                 point.classList.add('skill-point');
@@ -780,14 +813,6 @@
                 var labelY = center.y + Math.sin(angle) * labelRadius;
                 
                 var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                text.setAttribute('x', labelX);
-                text.setAttribute('y', labelY);
-                text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
-                text.setAttribute('dominant-baseline', 'middle');
-                text.setAttribute('font-size', '12');
-                text.setAttribute('fill', '#333');
-                text.setAttribute('font-weight', '600');
-                text.classList.add('skill-label');
                 text.textContent = skill.name;
                 text.onclick = (function(s) { return function() { showSkillDetails(s); }; })(skill);
                 svg.appendChild(text);
@@ -795,7 +820,7 @@
         }
 
         function showSkillDetails(skill) {
-            var levelNames = ['', 'Begynder', 'Grundlæggende', 'Kompetent', 'Erfaren', 'Ekspert'];
+            var levelNames = ['', 'Beginner', 'Basic', 'Competent', 'Experienced', 'Expert'];
             var skillDetails = document.querySelector('.skill-details');
             
             if (skillDetails) {
@@ -803,18 +828,18 @@
                     '<h3>' + skill.name + ' <span class="skill-level">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></h3>' +
                     '<p class="skill-description">' + skill.description + '</p>' +
                     '<div class="competency-section">' +
-                        '<h4>Dragon Shield har brug for:</h4>' +
+                        '<h4>Dragon Shield needs:</h4>' +
                         '<p>' + skill.needsDescription + '</p>' +
                     '</div>' +
                     '<div class="competency-section">' +
-                        '<h4>Dette kan jeg bidrage med:</h4>' +
+                        '<h4>I can contribute:</h4>' +
                         '<p>' + skill.contribution + '</p>' +
                     '</div>';
             }
         }
 
         window.onload = function() {
-            var sections = ['kompetencer', 'erfaring', 'motivation'];
+            var sections = ['competencies', 'experience', 'motivation'];
             for (var i = 0; i < sections.length; i++) {
                 var sectionElement = document.getElementById(sections[i] + '-section');
                 if (sectionElement) {
@@ -822,9 +847,9 @@
                 }
             }
             
-            var profilSection = document.getElementById('profil-section');
-            if (profilSection) {
-                profilSection.style.display = 'block';
+            var profileSection = document.getElementById('profile-section');
+            if (profileSection) {
+                profileSection.style.display = 'block';
             }
             
             var buttons = document.getElementsByClassName('nav-button');
@@ -841,4 +866,12 @@
         };
     </script>
 </body>
-</html>
+</html>setAttribute('x', labelX);
+                text.setAttribute('y', labelY);
+                text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
+                text.setAttribute('dominant-baseline', 'middle');
+                text.setAttribute('font-size', '12');
+                text.setAttribute('fill', '#333');
+                text.setAttribute('font-weight', '600');
+                text.classList.add('skill-label');
+                text.
