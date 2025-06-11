@@ -157,6 +157,30 @@
         .contact-value {
             color: #666;
         }
+
+        .languages-section {
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+            margin-top: 30px;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .language-name {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .language-level {
+            color: #666;
+            font-size: 14px;
+        }
         
         .main-content {
             display: grid;
@@ -353,30 +377,6 @@
             line-height: 1.7;
             margin-bottom: 20px;
         }
-
-        .languages-section {
-            border-top: 1px solid #eee;
-            padding-top: 20px;
-            margin-top: 30px;
-        }
-
-        .language-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .language-name {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .language-level {
-            color: #666;
-            font-size: 14px;
-        }
         
         .hidden {
             display: none;
@@ -529,14 +529,12 @@
         </div>
 
         <!-- Competencies Section -->
-        <div id="competencies-section" class="hidden">
-            <div class="header">
-                <h1 class="profile-header">Competency Mapping</h1>
-                <p class="profile-description">Anne Sofie Mikkelsen - Product Manager</p>
-    
+        <div id="competencies-section" class="content-box hidden">
+            <h2 class="section-title">Competency Mapping</h2>
+            
             <div class="main-content">
                 <div class="chart-container">
-                    <h2>Interactive Competency Radar</h2>
+                    <h3>Interactive Competency Radar</h3>
                     <svg id="skillChart"></svg>
                     <div class="legend">
                         <div class="legend-item">
@@ -556,7 +554,6 @@
                         <p>Click on a point or name in the radar to see detailed information about my competencies and experience.</p>
                     </div>
                 </div>
-            </div>
             </div>
         </div>
 
@@ -744,7 +741,6 @@
             var levels = 5;
             var angleStep = (2 * Math.PI) / skills.length;
             
-            // Draw background circles
             for (var i = 1; i <= levels; i++) {
                 var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                 circle.setAttribute('cx', center.x);
@@ -756,7 +752,6 @@
                 svg.appendChild(circle);
             }
             
-            // Draw axis lines
             for (var i = 0; i < skills.length; i++) {
                 var angle = (i * angleStep) - (Math.PI / 2);
                 var x = center.x + Math.cos(angle) * maxRadius;
@@ -772,7 +767,6 @@
                 svg.appendChild(line);
             }
             
-            // Draw polygon
             var points = [];
             for (var i = 0; i < skills.length; i++) {
                 var angle = (i * angleStep) - (Math.PI / 2);
@@ -789,7 +783,6 @@
             polygon.setAttribute('stroke-width', '2');
             svg.appendChild(polygon);
             
-            // Draw points and labels
             for (var i = 0; i < skills.length; i++) {
                 var skill = skills[i];
                 var angle = (i * angleStep) - (Math.PI / 2);
@@ -813,6 +806,14 @@
                 var labelY = center.y + Math.sin(angle) * labelRadius;
                 
                 var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', labelX);
+                text.setAttribute('y', labelY);
+                text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
+                text.setAttribute('dominant-baseline', 'middle');
+                text.setAttribute('font-size', '12');
+                text.setAttribute('fill', '#333');
+                text.setAttribute('font-weight', '600');
+                text.classList.add('skill-label');
                 text.textContent = skill.name;
                 text.onclick = (function(s) { return function() { showSkillDetails(s); }; })(skill);
                 svg.appendChild(text);
@@ -861,17 +862,8 @@
                 }
             }
             
-            // Draw the radar chart
             drawRadarChart();
         };
     </script>
 </body>
-</html>setAttribute('x', labelX);
-                text.setAttribute('y', labelY);
-                text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
-                text.setAttribute('dominant-baseline', 'middle');
-                text.setAttribute('font-size', '12');
-                text.setAttribute('fill', '#333');
-                text.setAttribute('font-weight', '600');
-                text.classList.add('skill-label');
-                text.
+</html>
