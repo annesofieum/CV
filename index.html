@@ -48,8 +48,6 @@
             gap: 15px;
             margin-bottom: 30px;
             flex-wrap: wrap;
-            role: navigation;
-            aria-label: "Main navigation";
         }
         
         .nav-button {
@@ -60,12 +58,6 @@
             font-size: 16px;
             font-weight: 500;
             transition: all 0.3s;
-            position: relative;
-        }
-        
-        .nav-button:focus {
-            outline: 2px solid #ffd700;
-            outline-offset: 2px;
         }
         
         .nav-button.active {
@@ -323,11 +315,6 @@
             position: relative;
         }
         
-        .experience-header:focus {
-            outline: 2px solid #ffd700;
-            outline-offset: -2px;
-        }
-        
         .experience-header:hover {
             background: linear-gradient(45deg, #dc143c, #8b0000);
             color: white;
@@ -365,6 +352,7 @@
             padding: 20px;
             background: #f8f9fa;
             border-top: 1px solid #eee;
+            display: none;
         }
         
         .skills-grid {
@@ -391,7 +379,7 @@
         }
         
         .hidden {
-            display: none !important;
+            display: none;
         }
         
         .link {
@@ -399,10 +387,8 @@
             text-decoration: none;
         }
         
-        .link:hover,
-        .link:focus {
+        .link:hover {
             text-decoration: underline;
-            outline: 1px solid #dc143c;
         }
         
         .skill-point {
@@ -410,11 +396,9 @@
             transition: all 0.3s ease;
         }
 
-        .skill-point:hover,
-        .skill-point:focus {
+        .skill-point:hover {
             stroke-width: 3;
             filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
-            outline: 2px solid #ffd700;
         }
 
         .skill-label {
@@ -422,26 +406,9 @@
             transition: all 0.3s ease;
         }
 
-        .skill-label:hover,
-        .skill-label:focus {
+        .skill-label:hover {
             font-weight: bold;
-        }
-
-        .skill-label:hover text,
-        .skill-label:focus text {
             fill: #ffd700;
-        }
-
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
         }
         
         @media (max-width: 768px) {
@@ -479,29 +446,6 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* High contrast mode support */
-        @media (prefers-contrast: high) {
-            .nav-button.active {
-                background: #000;
-                color: #fff;
-                border: 2px solid #fff;
-            }
-            
-            .skill-point {
-                stroke: #000;
-                stroke-width: 2;
-            }
-        }
-
-        /* Reduced motion support */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -511,34 +455,22 @@
             <p class="subtitle">Anne Sofie Mikkelsen</p>
         </div>
 
-        <nav class="navigation" role="navigation" aria-label="Main navigation">
-            <button class="nav-button active" onclick="showSection('profile', this)" aria-describedby="profile-desc">
-                Profile
-                <span id="profile-desc" class="sr-only">Personal information and contact details</span>
-            </button>
-            <button class="nav-button inactive" onclick="showSection('competencies', this)" aria-describedby="skills-desc">
-                Skills
-                <span id="skills-desc" class="sr-only">Interactive skill chart and competencies</span>
-            </button>
-            <button class="nav-button inactive" onclick="showSection('experience', this)" aria-describedby="experience-desc">
-                Experience
-                <span id="experience-desc" class="sr-only">Professional work experience and achievements</span>
-            </button>
-            <button class="nav-button inactive" onclick="showSection('motivation', this)" aria-describedby="motivation-desc">
-                Motivation
-                <span id="motivation-desc" class="sr-only">Why I want to work at Dragon Shield</span>
-            </button>
-        </nav>
+        <div class="navigation">
+            <button class="nav-button active" onclick="showSection('profile', this)">Profile</button>
+            <button class="nav-button inactive" onclick="showSection('competencies', this)">Skills</button>
+            <button class="nav-button inactive" onclick="showSection('experience', this)">Experience</button>
+            <button class="nav-button inactive" onclick="showSection('motivation', this)">Motivation</button>
+        </div>
 
-        <section id="profile-section" class="content-box" aria-labelledby="profile-header">
-            <h2 id="profile-header" class="profile-header">Data-driven product strategist with creative approach and gaming passion</h2>
+        <div id="profile-section" class="content-box">
+            <div class="profile-header">Data-driven product strategist with creative approach and gaming passion</div>
             <p class="profile-description">
                 Experienced coordinator with strong analytical background and passion for creative solutions. 
                 Specialist in market understanding, data analysis, and cross-functional collaboration with motivation for product development within gaming and collectibles.
-                Dedicated gamer with experience ranging from MMOs like World of Warcraft to modern AAA titles on PS5 - currently immersed in Star Wars Outlaws.
+                Dedicated gamer with experience ranging from MMOs like World of Warcraft to modern AAA titles on PS5.
             </p>
             
-            <div class="stats-grid" role="region" aria-label="Professional statistics">
+            <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-number">50+</div>
                     <div class="stat-label">Brands managed</div>
@@ -553,8 +485,8 @@
                 </div>
             </div>
 
-            <section class="contact-section" aria-labelledby="contact-title">
-                <h3 id="contact-title" class="section-title">Contact</h3>
+            <div class="contact-section">
+                <h3 class="section-title">Contact</h3>
                 <div class="contact-grid">
                     <div>
                         <div class="contact-item">
@@ -574,14 +506,14 @@
                         <div class="contact-item">
                             <span class="contact-label">LinkedIn:</span> 
                             <a href="https://www.linkedin.com/in/anne-sofie-uhrskov-mikkelsen-7a3349197" 
-                               target="_blank" class="link" rel="noopener noreferrer">Anne Sofie Uhrskov Mikkelsen</a>
+                               target="_blank" class="link">Anne Sofie Uhrskov Mikkelsen</a>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section class="languages-section" aria-labelledby="languages-title">
-                <h3 id="languages-title" class="section-title">Languages</h3>
+            <div class="languages-section">
+                <h3 class="section-title">Languages</h3>
                 <div class="language-item">
                     <span class="language-name">Danish</span>
                     <span class="language-level">Native</span>
@@ -590,11 +522,11 @@
                     <span class="language-name">English</span>
                     <span class="language-level">Fluent</span>
                 </div>
-            </section>
-        </section>
+            </div>
+        </div>
 
-        <section id="competencies-section" class="content-box hidden" aria-labelledby="competencies-header">
-            <h2 id="competencies-header" class="profile-header">Skill Mapping</h2>
+        <div id="competencies-section" class="content-box hidden">
+            <div class="profile-header">Skill Mapping</div>
             <p class="profile-description">
                 Interactive visualization of my skills relevant for the Product Manager role.
             </p>
@@ -602,17 +534,14 @@
             <div class="main-content">
                 <div class="chart-container">
                     <h3>Adventurer Skill Chart</h3>
-                    <svg id="skillChart" role="img" aria-labelledby="chart-title chart-desc">
-                        <title id="chart-title">Skills Radar Chart</title>
-                        <desc id="chart-desc">Interactive radar chart showing skill levels from 1-5 across different competencies</desc>
-                    </svg>
-                    <div class="legend" role="region" aria-label="Chart legend">
+                    <svg id="skillChart"></svg>
+                    <div class="legend">
                         <div class="legend-item">
-                            <div class="legend-color" style="background: #ffd700;" aria-hidden="true"></div>
+                            <div class="legend-color" style="background: #ffd700;"></div>
                             <span>Strong level (Pro/Boss Level)</span>
                         </div>
                         <div class="legend-item">
-                            <div class="legend-color" style="background: #666;" aria-hidden="true"></div>
+                            <div class="legend-color" style="background: #666;"></div>
                             <span>Development areas</span>
                         </div>
                     </div>
@@ -629,85 +558,93 @@
                     </div>
                 </div>
     
-                <aside class="skill-details" role="complementary" aria-live="polite">
+                <div class="skill-details">
                     <div class="default-message">
                         <h3>Click on a skill</h3>
                         <p>Click on a point or name in the radar to see detailed information about my skills and experience.</p>
                     </div>
-                </aside>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <section id="experience-section" class="content-box hidden" aria-labelledby="experience-header">
-            <h2 id="experience-header" class="profile-header">Relevant Experience</h2>
+        <div id="experience-section" class="content-box hidden">
+            <div class="profile-header">Relevant Experience</div>
             <p class="profile-description">
                 My professional background and how these experiences translate to Product Manager competencies at Dragon Shield.
             </p>
             
-            <article class="experience-item">
-                <header class="experience-header" onclick="toggleExperience('adjutant')" 
-                        onkeypress="handleKeyPress(event, 'adjutant')" 
-                        tabindex="0" role="button" aria-expanded="false" aria-controls="adjutant-details">
+            <div class="experience-item">
+                <div class="experience-header" onclick="toggleExperience('adjutant')">
                     <div class="experience-title">Marketplace Manager</div>
-                    <div class="experience-company">Adjutant (Mar. 2022 – Nov. 2024) • High relevance</div>
-                </header>
-                <div id="adjutant-details" class="experience-details hidden">
-                    <div class="skills-grid">
-                        <div class="skill-tag">Stakeholder Management</div>
-                        <div class="skill-tag">Data Analysis</div>
-                        <div class="skill-tag">Process Management</div>
-                    </div>
-                    <p><strong>Technical skills:</strong> Excel, PowerBI, Canva</p>
-                    <p><strong>Transferable to Product Management:</strong> Managed 50+ international brands simultaneously, requiring prioritization, stakeholder coordination, and data-driven decision making. Analyzed market trends and performance metrics to support strategic decisions - core skills for product roadmap planning and market positioning.</p>
+                    <div class="experience-company">Adjutant (March 2022 – November 2024) • High relevance</div>
                 </div>
-            </article>
+                <div id="adjutant-details" class="experience-details">
+                    <div class="skills-grid">
+                        <div class="skill-tag">Business Cases</div>
+                        <div class="skill-tag">Team Management</div>
+                        <div class="skill-tag">Strategic Ownership</div>
+                        <div class="skill-tag">Performance Tracking</div>
+                    </div>
+                    <p><strong>Key responsibilities:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Coordinated back-office for 50+ brands with focus on market timing and positioning</li>
+                        <li>Helped build business cases based on sales data and market trends for strategic decisions</li>
+                        <li>Facilitated collaboration between design, marketing and sales teams</li>
+                        <li>Managed and trained student worker while maintaining oversight of all brand operations</li>
+                    </ul>
+                    <p><strong>PM-relevant case:</strong> Had responsibility for 50+ brand portfolio, ensuring consistent updates and compliance across all accounts. Helped analyze market performance for underperforming brand categories and presented data-driven recommendations to leadership, resulting in strategic pivots for product portfolio.</p>
+                </div>
+            </div>
 
-            <article class="experience-item">
-                <header class="experience-header" onclick="toggleExperience('sofie')" 
-                        onkeypress="handleKeyPress(event, 'sofie')" 
-                        tabindex="0" role="button" aria-expanded="false" aria-controls="sofie-details">
-                    <div class="experience-title">Creative Intern</div>
-                    <div class="experience-company">Sofie Ladefoged (Jan. 2022 – Mar. 2022) • Medium relevance</div>
-                </header>
-                <div id="sofie-details" class="experience-details hidden">
+            <div class="experience-item">
+                <div class="experience-header" onclick="toggleExperience('sofie')">
+                    <div class="experience-title">Creative Associate</div>
+                    <div class="experience-company">Sofie Ladefoged (January 2022 – March 2022) • Medium relevance</div>
+                </div>
+                <div id="sofie-details" class="experience-details">
                     <div class="skills-grid">
                         <div class="skill-tag">Content Creation</div>
-                        <div class="skill-tag">Storytelling</div>
                         <div class="skill-tag">Brand Communication</div>
                     </div>
-                    <p><strong>Technical skills:</strong> Photoshop, InDesign, WordPress, Klaviyo, Later</p>
-                    <p><strong>Transferable to Product Management:</strong> Developed compelling brand narratives and understood how to communicate product value to target audiences. Experience in translating brand vision into tangible content - essential for product positioning and go-to-market strategies.</p>
+                    <p><strong>Key responsibilities:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Developed content and newsletters with focus on sustainable products</li>
+                        <li>Worked with storytelling and communication around environmentally conscious values</li>
+                        <li>Contributed to brand's visual expression and marketing materials</li>
+                    </ul>
+                    <p><strong>PM-relevant case:</strong> Developed content strategies and storytelling around sustainable products, learning to communicate complex environmental values in ways that resonated with target audience through visual and written media.</p>
                 </div>
-            </article>
+            </div>
 
-            <article class="experience-item">
-                <header class="experience-header" onclick="toggleExperience('salling')" 
-                        onkeypress="handleKeyPress(event, 'salling')" 
-                        tabindex="0" role="button" aria-expanded="false" aria-controls="salling-details">
+            <div class="experience-item">
+                <div class="experience-header" onclick="toggleExperience('salling')">
                     <div class="experience-title">Purchasing Intern</div>
-                    <div class="experience-company">Salling (Aug. 2020 – Dec. 2020) • Medium relevance</div>
-                </header>
-                <div id="salling-details" class="experience-details hidden">
-                    <div class="skills-grid">
-                        <div class="skill-tag">Sales Analysis</div>
-                        <div class="skill-tag">Vendor Relations</div>
-                        <div class="skill-tag">Market Understanding</div>
-                    </div>
-                    <p><strong>Technical skills:</strong> Excel, SAP</p>
-                    <p><strong>Transferable to Product Management:</strong> Analyzed sales data to optimize product assortment and collaborated across purchasing, marketing, and presentation teams. Gained insights into retail dynamics and customer behavior - valuable for understanding product performance and market fit.</p>
+                    <div class="experience-company">Salling Group (August 2020 – December 2020) • Medium relevance</div>
                 </div>
-            </article>
-        </section>
+                <div id="salling-details" class="experience-details">
+                    <div class="skills-grid">
+                        <div class="skill-tag">Market Research</div>
+                        <div class="skill-tag">Roadmap Planning</div>
+                    </div>
+                    <p><strong>Key responsibilities:</strong></p>
+                    <ul style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Gathered market insights through data analysis and customer feedback for assortment optimization</li>
+                        <li>Coordinated development projects between purchasing, marketing and supply chain teams</li>
+                    </ul>
+                    <p><strong>PM-relevant case:</strong> Tracked seasonal product performance and adjusted roadmap based on real-time sales data — core competency for post-launch tracking and roadmap adjustments.</p>
+                </div>
+            </div>
+        </div>
 
-        <section id="motivation-section" class="content-box hidden" aria-labelledby="motivation-header">
-            <h2 id="motivation-header" class="profile-header">Motivation</h2>
+        <div id="motivation-section" class="content-box hidden">
+            <div class="profile-header">Motivation</div>
             <p class="profile-description">
                 Why I'm passionate about joining Dragon Shield as a Product Manager and how my gaming background aligns with the company's mission.
             </p>
             
             <div class="motivation-text">
                 <p>
-                    I've worked in fashion for years, which taught me a lot about aesthetics and understanding what people want. But let's be honest — trying to explain why I spend my evenings optimizing my PS5 setup for Star Wars Outlaws to people who think gaming is "just for kids" gets old fast.
+                    I've worked in fashion for years, which taught me a lot about aesthetics and understanding what people want. But let's be honest — trying to explain why I spend my evenings grinding for a new mount in WoW to people who think gaming is "just for kids" gets old fast.
                 </p>
                 <p>
                     I'm the person who will drag you into a 30-minute debate about Harry Potter vs. Star Wars vs. Lord of The Rings, and I'll probably win because I've thought about it way too much. I've been gaming since I was a preteen, and those late-night WoW raids taught me more about teamwork and problem-solving than most corporate workshops ever will.
@@ -722,115 +659,56 @@
                     I'm a problem-solver by nature. Give me a challenge and I'll dig into it until I understand not just what's happening, but why it matters to the people involved. I want to work somewhere I can be nerdy about products with people who get it. Dragon Shield feels like that place.
                 </p>
             </div>
-        </section>
+        </div>
     </div>
 
     <script>
-        'use strict';
-        
-        // Cache DOM elements to avoid repeated queries
-        const elements = {
-            sections: {},
-            buttons: [],
-            skillDetails: null,
-            skillChart: null
-        };
-
-        // Initialize elements cache
-        function initializeElements() {
-            const sectionNames = ['profile', 'competencies', 'experience', 'motivation'];
-            
-            sectionNames.forEach(name => {
-                elements.sections[name] = document.getElementById(name + '-section');
-            });
-            
-            elements.buttons = Array.from(document.getElementsByClassName('nav-button'));
-            elements.skillDetails = document.querySelector('.skill-details');
-            elements.skillChart = document.getElementById('skillChart');
-        }
-
         function showSection(sectionName, buttonElement) {
-            try {
-                // Hide all sections using CSS class
-                Object.values(elements.sections).forEach(section => {
-                    if (section) {
-                        section.classList.add('hidden');
-                    }
-                });
-
-                // Show target section
-                const targetSection = elements.sections[sectionName];
-                if (targetSection) {
-                    targetSection.classList.remove('hidden');
-                } else {
-                    console.warn(`Section '${sectionName}' not found`);
-                    return;
+            var sections = ['profile', 'competencies', 'experience', 'motivation'];
+            for (var i = 0; i < sections.length; i++) {
+                var sectionElement = document.getElementById(sections[i] + '-section');
+                if (sectionElement) {
+                    sectionElement.classList.add('hidden');
                 }
+            }
 
-                // Update button states
-                elements.buttons.forEach(button => {
-                    button.className = 'nav-button inactive';
-                });
+            var targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
 
-                if (buttonElement) {
-                    buttonElement.className = 'nav-button active';
-                }
+            var buttons = document.getElementsByClassName('nav-button');
+            for (var j = 0; j < buttons.length; j++) {
+                buttons[j].className = 'nav-button inactive';
+            }
 
-                // Re-draw chart if switching to competencies section
-                if (sectionName === 'competencies') {
-                    setTimeout(drawRadarChart, 100);
-                }
-            } catch (error) {
-                console.error('Error in showSection:', error);
+            if (buttonElement) {
+                buttonElement.className = 'nav-button active';
+            }
+
+            if (sectionName === 'competencies') {
+                setTimeout(drawRadarChart, 100);
             }
         }
 
         function toggleExperience(experienceId) {
-            try {
-                const details = document.getElementById(experienceId + '-details');
-                const header = document.querySelector(`[aria-controls="${experienceId}-details"]`);
-                
-                if (!details) {
-                    console.warn(`Experience details '${experienceId}' not found`);
-                    return;
-                }
-
-                const isVisible = !details.classList.contains('hidden');
-                
-                // Close all other experience details
-                const allDetails = document.getElementsByClassName('experience-details');
-                const allHeaders = document.querySelectorAll('.experience-header[role="button"]');
-                
-                Array.from(allDetails).forEach(detail => {
-                    detail.classList.add('hidden');
-                });
-                
-                Array.from(allHeaders).forEach(h => {
-                    h.setAttribute('aria-expanded', 'false');
-                });
-
-                // Toggle current one
-                if (!isVisible) {
-                    details.classList.remove('hidden');
-                    if (header) {
-                        header.setAttribute('aria-expanded', 'true');
+            var details = document.getElementById(experienceId + '-details');
+            if (details) {
+                if (details.style.display === 'block') {
+                    details.style.display = 'none';
+                } else {
+                    var allDetails = document.getElementsByClassName('experience-details');
+                    for (var k = 0; k < allDetails.length; k++) {
+                        allDetails[k].style.display = 'none';
                     }
+                    details.style.display = 'block';
                 }
-            } catch (error) {
-                console.error('Error in toggleExperience:', error);
             }
         }
 
-        function handleKeyPress(event, experienceId) {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                toggleExperience(experienceId);
-            }
-        }
-
-        const skills = [
+        var skills = [
             {
-                name: "Market Understanding",
+                name: "Market Analysis",
                 level: 5,
                 description: "Deep understanding of market trends and customer behavior through work with international brands.",
                 needsDescription: "Ability to analyze market trends and understand player needs and passion",
@@ -841,7 +719,7 @@
                 level: 4,
                 description: "Strong analytical approach with experience analyzing complex datasets and market trends.",
                 needsDescription: "Ability to gather insights through surveys, data platforms and customer feedback",
-                contribution: "Experience with sales data analysis and market trends from both Adjutant and Salling. PowerBI and Excel skills for advanced data processing."
+                contribution: "Experience with sales data analysis and market trends from both Adjutant and Salling. Excel skills for advanced data processing."
             },
             {
                 name: "Cross-functional Collaboration",
@@ -879,250 +757,189 @@
                 contribution: "Experience with sales analysis and process optimization. Structured approach to goal setting and strong motivation to learn advanced performance tracking."
             },
             {
-                name: "Gaming Passion",
+                name: "Gaming Community Insight",
                 level: 5,
-                description: "Genuine gaming enthusiast with broad experience across platforms and genres - from World of Warcraft to PS5 titles like Star Wars Outlaws.",
+                description: "Genuine gaming enthusiast with broad experience across platforms and genres - from World of Warcraft to modern console gaming.",
                 needsDescription: "Understanding of what drives gaming enthusiasts and collectors",
-                contribution: "Personal gaming experience from MMOs to AAA console titles provides authentic insight into gaming community needs, player psychology and what creates passion for gaming accessories and collectibles."
+                contribution: "Personal gaming experience from MMO raids to console gaming provides authentic insight into gaming community needs, player psychology and what creates passion for gaming accessories and collectibles."
             }
         ];
 
         function drawRadarChart() {
-            try {
-                const svg = elements.skillChart;
-                if (!svg) {
-                    console.warn('Skill chart element not found');
-                    return;
-                }
+            var svg = document.getElementById('skillChart');
+            if (!svg) return;
+            
+            svg.setAttribute('viewBox', '0 0 500 500');
+            svg.innerHTML = '';
+            
+            var center = { x: 250, y: 250 };
+            var maxRadius = 170;
+            var levels = 5;
+            var angleStep = (2 * Math.PI) / skills.length;
+            
+            for (var i = 1; i <= levels; i++) {
+                var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', center.x);
+                circle.setAttribute('cy', center.y);
+                circle.setAttribute('r', (maxRadius / levels) * i);
+                circle.setAttribute('fill', 'none');
+                circle.setAttribute('stroke', '#e0e6ed');
+                circle.setAttribute('stroke-width', '1');
+                svg.appendChild(circle);
+            }
+
+            for (var i = 0; i < skills.length; i++) {
+                var angle = (i * angleStep) - (Math.PI / 2);
+                var x = center.x + Math.cos(angle) * maxRadius;
+                var y = center.y + Math.sin(angle) * maxRadius;
+
+                var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                line.setAttribute('x1', center.x);
+                line.setAttribute('y1', center.y);
+                line.setAttribute('x2', x);
+                line.setAttribute('y2', y);
+                line.setAttribute('stroke', '#e0e6ed');
+                line.setAttribute('stroke-width', '1');
+                svg.appendChild(line);
+            }
+
+            for (var i = 1; i <= levels; i++) {
+                var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', center.x + 5);
+                text.setAttribute('y', center.y - (maxRadius / levels) * i + 5);
+                text.setAttribute('font-size', '12');
+                text.setAttribute('fill', '#666');
+                text.textContent = i;
+                svg.appendChild(text);
+            }
+
+            var points = [];
+            for (var i = 0; i < skills.length; i++) {
+                var angle = (i * angleStep) - (Math.PI / 2);
+                var radius = (skills[i].level / levels) * maxRadius;
+                var x = center.x + Math.cos(angle) * radius;
+                var y = center.y + Math.sin(angle) * radius;
+                points.push(x + ',' + y);
+            }
+
+            var polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+            polygon.setAttribute('points', points.join(' '));
+            polygon.setAttribute('fill', 'rgba(255, 215, 0, 0.2)');
+            polygon.setAttribute('stroke', '#ffd700');
+            polygon.setAttribute('stroke-width', '2');
+            svg.appendChild(polygon);
+
+            for (var i = 0; i < skills.length; i++) {
+                var skill = skills[i];
+                var angle = (i * angleStep) - (Math.PI / 2);
+                var radius = (skill.level / levels) * maxRadius;
+                var x = center.x + Math.cos(angle) * radius;
+                var y = center.y + Math.sin(angle) * radius;
+
+                var point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                point.setAttribute('cx', x);
+                point.setAttribute('cy', y);
+                point.setAttribute('r', skill.level >= 4 ? '8' : '6');
+                point.setAttribute('fill', skill.level >= 4 ? '#ffd700' : '#666');
+                point.setAttribute('stroke', 'white');
+                point.setAttribute('stroke-width', '2');
+                point.classList.add('skill-point');
+                point.skillData = skill;
+                point.onclick = function() { showSkillDetails(this.skillData); };
+                svg.appendChild(point);
+
+                var labelRadius = maxRadius + 30;
+                var labelX = center.x + Math.cos(angle) * labelRadius;
+                var labelY = center.y + Math.sin(angle) * labelRadius;
+
+                // Split long skill names into multiple lines
+                var words = skill.name.split(' ');
+                var lines = [];
                 
-                svg.setAttribute('viewBox', '0 0 500 500');
-                svg.innerHTML = '';
-                
-                const center = { x: 250, y: 250 };
-                const maxRadius = 170;
-                const levels = 5;
-                const angleStep = (2 * Math.PI) / skills.length;
-                
-                // Create SVG namespace
-                const svgNS = 'http://www.w3.org/2000/svg';
-                
-                // Draw concentric circles
-                for (let i = 1; i <= levels; i++) {
-                    const circle = document.createElementNS(svgNS, 'circle');
-                    circle.setAttribute('cx', center.x);
-                    circle.setAttribute('cy', center.y);
-                    circle.setAttribute('r', (maxRadius / levels) * i);
-                    circle.setAttribute('fill', 'none');
-                    circle.setAttribute('stroke', '#e0e6ed');
-                    circle.setAttribute('stroke-width', '1');
-                    svg.appendChild(circle);
+                if (words.length > 2) {
+                    // For names with more than 2 words, split roughly in half
+                    var midPoint = Math.ceil(words.length / 2);
+                    lines = [
+                        words.slice(0, midPoint).join(' '),
+                        words.slice(midPoint).join(' ')
+                    ];
+                } else if (words.length === 2 && (words[0].length + words[1].length) > 12) {
+                    // For long two-word names, split into separate lines
+                    lines = words;
+                } else {
+                    // For short names, keep on one line
+                    lines = [skill.name];
                 }
 
-                // Draw axis lines
-                for (let i = 0; i < skills.length; i++) {
-                    const angle = (i * angleStep) - (Math.PI / 2);
-                    const x = center.x + Math.cos(angle) * maxRadius;
-                    const y = center.y + Math.sin(angle) * maxRadius;
+                // Create a group element for the label
+                var labelGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                labelGroup.classList.add('skill-label');
+                labelGroup.skillData = skill;
+                labelGroup.onclick = function() { showSkillDetails(this.skillData); };
 
-                    const line = document.createElementNS(svgNS, 'line');
-                    line.setAttribute('x1', center.x);
-                    line.setAttribute('y1', center.y);
-                    line.setAttribute('x2', x);
-                    line.setAttribute('y2', y);
-                    line.setAttribute('stroke', '#e0e6ed');
-                    line.setAttribute('stroke-width', '1');
-                    svg.appendChild(line);
-                }
-
-                // Draw level indicators
-                for (let i = 1; i <= levels; i++) {
-                    const text = document.createElementNS(svgNS, 'text');
-                    text.setAttribute('x', center.x + 5);
-                    text.setAttribute('y', center.y - (maxRadius / levels) * i + 5);
+                // Create text elements for each line
+                lines.forEach(function(line, lineIndex) {
+                    var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', labelX);
+                    text.setAttribute('y', labelY + (lineIndex - (lines.length - 1) / 2) * 14);
+                    text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
+                    text.setAttribute('dominant-baseline', 'middle');
                     text.setAttribute('font-size', '12');
-                    text.setAttribute('fill', '#666');
-                    text.textContent = i;
-                    svg.appendChild(text);
-                }
-
-                // Calculate polygon points
-                const points = [];
-                for (let i = 0; i < skills.length; i++) {
-                    const angle = (i * angleStep) - (Math.PI / 2);
-                    const radius = (skills[i].level / levels) * maxRadius;
-                    const x = center.x + Math.cos(angle) * radius;
-                    const y = center.y + Math.sin(angle) * radius;
-                    points.push(x + ',' + y);
-                }
-
-                // Draw skill area polygon
-                const polygon = document.createElementNS(svgNS, 'polygon');
-                polygon.setAttribute('points', points.join(' '));
-                polygon.setAttribute('fill', 'rgba(255, 215, 0, 0.2)');
-                polygon.setAttribute('stroke', '#ffd700');
-                polygon.setAttribute('stroke-width', '2');
-                svg.appendChild(polygon);
-
-                // Draw skill points and labels
-                for (let i = 0; i < skills.length; i++) {
-                    const skill = skills[i];
-                    const angle = (i * angleStep) - (Math.PI / 2);
-                    const radius = (skill.level / levels) * maxRadius;
-                    const x = center.x + Math.cos(angle) * radius;
-                    const y = center.y + Math.sin(angle) * radius;
-
-                    // Create skill point
-                    const point = document.createElementNS(svgNS, 'circle');
-                    point.setAttribute('cx', x);
-                    point.setAttribute('cy', y);
-                    point.setAttribute('r', skill.level >= 4 ? '8' : '6');
-                    point.setAttribute('fill', skill.level >= 4 ? '#ffd700' : '#666');
-                    point.setAttribute('stroke', 'white');
-                    point.setAttribute('stroke-width', '2');
-                    point.setAttribute('tabindex', '0');
-                    point.setAttribute('role', 'button');
-                    point.setAttribute('aria-label', `${skill.name}: Level ${skill.level} out of 5`);
-                    point.classList.add('skill-point');
+                    text.setAttribute('fill', '#333');
+                    text.textContent = line;
+                    text.style.pointerEvents = 'none';
                     
-                    // Add event listeners
-                    point.addEventListener('click', () => showSkillDetails(skill));
-                    point.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            showSkillDetails(skill);
-                        }
-                    });
-                    
-                    svg.appendChild(point);
-
-                    // Create skill label with line wrapping
-                    const labelRadius = maxRadius + 30;
-                    const labelX = center.x + Math.cos(angle) * labelRadius;
-                    const labelY = center.y + Math.sin(angle) * labelRadius;
-
-                    // Split long skill names into multiple lines
-                    const words = skill.name.split(' ');
-                    let lines = [];
-                    
-                    if (words.length > 2) {
-                        // For names with more than 2 words, split roughly in half
-                        const midPoint = Math.ceil(words.length / 2);
-                        lines = [
-                            words.slice(0, midPoint).join(' '),
-                            words.slice(midPoint).join(' ')
-                        ];
-                    } else if (words.length === 2 && (words[0].length + words[1].length) > 12) {
-                        // For long two-word names, split into separate lines
-                        lines = words;
-                    } else {
-                        // For short names, keep on one line
-                        lines = [skill.name];
-                    }
-
-                    // Create a group element for the label
-                    const labelGroup = document.createElementNS(svgNS, 'g');
-                    labelGroup.setAttribute('tabindex', '0');
-                    labelGroup.setAttribute('role', 'button');
-                    labelGroup.setAttribute('aria-label', `${skill.name}: Level ${skill.level} out of 5`);
-                    labelGroup.classList.add('skill-label');
-                    
-                    // Add event listeners to the group
-                    labelGroup.addEventListener('click', () => showSkillDetails(skill));
-                    labelGroup.addEventListener('keypress', (e) => {
-                        if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            showSkillDetails(skill);
-                        }
-                    });
-
-                    // Create text elements for each line
-                    lines.forEach((line, lineIndex) => {
-                        const text = document.createElementNS(svgNS, 'text');
-                        text.setAttribute('x', labelX);
-                        text.setAttribute('y', labelY + (lineIndex - (lines.length - 1) / 2) * 14); // Adjust y position for multiple lines
-                        text.setAttribute('text-anchor', labelX > center.x ? 'start' : 'end');
-                        text.setAttribute('dominant-baseline', 'middle');
-                        text.setAttribute('font-size', '12');
-                        text.setAttribute('fill', '#333');
-                        text.textContent = line;
-                        text.style.pointerEvents = 'none'; // Let the group handle events
-                        
-                        labelGroup.appendChild(text);
-                    });
-                    
-                    svg.appendChild(labelGroup);
-                }
-            } catch (error) {
-                console.error('Error drawing radar chart:', error);
+                    labelGroup.appendChild(text);
+                });
+                
+                svg.appendChild(labelGroup);
             }
         }
 
         function showSkillDetails(skill) {
-            try {
-                const levelNames = ['', 'Noob', 'Getting There', 'Competent', 'Pro', 'Boss Level'];
-                
-                if (!elements.skillDetails) {
-                    console.warn('Skill details element not found');
-                    return;
+            var levelNames = ['', 'Noob', 'Getting There', 'Competent', 'Pro', 'Boss Level'];
+            var skillDetails = document.querySelector('.skill-details');
+            
+            if (skillDetails) {
+                skillDetails.innerHTML = 
+                    '<h3>' + skill.name + ' <span class="skill-level">' + levelNames[skill.level] + ' (' + skill.level + '/5)</span></h3>' +
+                    '<p class="skill-description">' + skill.description + '</p>' +
+                    '<div class="competency-section">' +
+                        '<h4>Dragon Shield needs:</h4>' +
+                        '<p>' + skill.needsDescription + '</p>' +
+                    '</div>' +
+                    '<div class="competency-section">' +
+                        '<h4>I can contribute:</h4>' +
+                        '<p>' + skill.contribution + '</p>' +
+                    '</div>';
+            }
+        }
+
+        window.onload = function() {
+            var sections = ['competencies', 'experience', 'motivation'];
+            for (var i = 0; i < sections.length; i++) {
+                var sectionElement = document.getElementById(sections[i] + '-section');
+                if (sectionElement) {
+                    sectionElement.classList.add('hidden');
                 }
-                
-                elements.skillDetails.innerHTML = 
-                    `<h3>${skill.name} <span class="skill-level">${levelNames[skill.level]} (${skill.level}/5)</span></h3>` +
-                    `<p class="skill-description">${skill.description}</p>` +
-                    `<div class="competency-section">` +
-                        `<h4>Dragon Shield needs:</h4>` +
-                        `<p>${skill.needsDescription}</p>` +
-                    `</div>` +
-                    `<div class="competency-section">` +
-                        `<h4>I can contribute:</h4>` +
-                        `<p>${skill.contribution}</p>` +
-                    `</div>`;
-            } catch (error) {
-                console.error('Error showing skill details:', error);
             }
-        }
-
-        // Initialize when DOM is ready
-        function initialize() {
-            try {
-                initializeElements();
-                
-                // Set initial state
-                Object.values(elements.sections).forEach((section, index) => {
-                    if (section) {
-                        if (index === 0) { // Show profile section first
-                            section.classList.remove('hidden');
-                        } else {
-                            section.classList.add('hidden');
-                        }
-                    }
-                });
-                
-                // Set initial button states
-                elements.buttons.forEach((button, index) => {
-                    button.className = index === 0 ? 'nav-button active' : 'nav-button inactive';
-                });
-                
-                // Draw the radar chart
-                drawRadarChart();
-                
-                console.log('CV website initialized successfully');
-            } catch (error) {
-                console.error('Error initializing website:', error);
+            
+            var profileSection = document.getElementById('profile-section');
+            if (profileSection) {
+                profileSection.classList.remove('hidden');
             }
-        }
-
-        // Wait for DOM to be fully loaded
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initialize);
-        } else {
-            initialize();
-        }
-
-        // Global functions for onclick handlers (needed for HTML onclick attributes)
-        window.showSection = showSection;
-        window.toggleExperience = toggleExperience;
-        window.handleKeyPress = handleKeyPress;
+            
+            var buttons = document.getElementsByClassName('nav-button');
+            for (var j = 0; j < buttons.length; j++) {
+                if (j === 0) {
+                    buttons[j].className = 'nav-button active';
+                } else {
+                    buttons[j].className = 'nav-button inactive';
+                }
+            }
+            
+            drawRadarChart();
+        };
     </script>
 </body>
 </html>
