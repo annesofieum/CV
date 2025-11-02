@@ -14,22 +14,29 @@
       background: #15192c;
       overflow-x: hidden;
     }
-    .hero-bg {
+    .background-holder {
       position: fixed;
       inset: 0;
       z-index: 0;
       width: 100vw;
       height: 100vh;
+      pointer-events: none;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
       filter: blur(2px) brightness(0.7) saturate(1.1);
-      transition: filter 0.5s;
     }
     .hero-overlay {
-      position: fixed;
+      position: absolute;
       inset: 0;
-      z-index: 1;
+      width: 100vw;
+      height: 100vh;
       background: linear-gradient(180deg,rgba(22,24,38,0.85) 0%,rgba(38,22,30,0.6) 100%);
-      backdrop-filter: blur(2px);
+      pointer-events: none;
     }
     .nav {
       position: fixed;
@@ -74,14 +81,13 @@
     .hero {
       position: relative;
       z-index: 3;
-      min-height: 80vh;
+      min-height: 100vh;
+      width: 100vw;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 110px;
-      padding-bottom: 70px;
       animation: fadeIn 1.2s;
     }
     @keyframes fadeIn {
@@ -124,12 +130,14 @@
     }
     /* Glass panel for sections */
     .panel {
+      position: relative;
+      z-index: 4;
       background: rgba(40,55,87,0.12);
       border-radius: 18px;
       box-shadow: 0 4px 32px #232d4777;
       backdrop-filter: blur(12px);
       max-width: 900px;
-      margin: 40px auto;
+      margin: 60px auto;
       padding: 42px 38px;
       color: #c0c9e5;
       font-size: 1.19rem;
@@ -340,9 +348,11 @@
   </style>
 </head>
 <body>
-  <!-- Hero Background - Use your own epic fantasy art here -->
-  <img src="https://cdnb.artstation.com/p/assets/images/images/045/541/254/large/anna-koutsidou-dragon-rider-final.jpg?1643144948" alt="Fantasy Dragon" class="hero-bg"/>
-  <div class="hero-overlay"></div>
+  <!-- Background image and overlay now in their own container, under all content -->
+  <div class="background-holder">
+    <img src="https://cdnb.artstation.com/p/assets/images/images/045/541/254/large/anna-koutsidou-dragon-rider-final.jpg?1643144948" alt="Fantasy Dragon" class="hero-bg"/>
+    <div class="hero-overlay"></div>
+  </div>
   <!-- Navigation Bar -->
   <nav class="nav">
     <div class="logo">DS</div>
@@ -357,9 +367,11 @@
   </nav>
   <!-- Hero Section -->
   <section id="hero-section" class="hero">
-    <div class="hero-title">Dragon & Slayer</div>
-    <div class="hero-subtitle">Anne Sofie Mikkelsen – Product Manager & Dragon Tamer</div>
-    <button class="hero-cta" onclick="showSection('profile')">View My Character Sheet</button>
+    <div>
+      <div class="hero-title">Dragon & Slayer</div>
+      <div class="hero-subtitle">Anne Sofie Mikkelsen – Product Manager & Dragon Tamer</div>
+      <button class="hero-cta" onclick="showSection('profile')">View My Character Sheet</button>
+    </div>
   </section>
   <!-- Main Panels -->
   <main id="main-content">
