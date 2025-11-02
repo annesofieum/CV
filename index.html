@@ -218,38 +218,70 @@
     .skill-detail {
       background: none;
       color: #c2b280;
-      border-radius: 14px;
+      border-radius: 18px;
+      border: 3px solid #e4d8b4;
       box-shadow: none;
-      padding: 32px 38px;
-      min-width: 290px;
-      max-width: 360px;
+      padding: 38px 44px 30px 44px;
+      min-width: 340px;
+      max-width: 440px;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 1.15rem;
       position: relative;
       margin-top: 10px;
       margin-bottom: 20px;
       animation: fadeInDetail 0.7s;
+      text-align: left;
+      line-height: 1.5;
+      display: none;
     }
     .skill-detail-close {
       position: absolute;
-      top: 8px;
-      right: 12px;
+      top: 14px;
+      right: 20px;
       background: none;
       border: none;
       color: #c2b280;
-      font-size: 22px;
+      font-size: 24px;
       font-family: Arial, sans-serif;
       cursor: pointer;
       font-weight: bold;
     }
-    .skill-label {
+    .skill-detail .skill-detail-title {
       font-family: 'MedievalSharp', cursive;
-      font-size: 1.18rem;
+      font-size: 1.25rem;
       color: #e4d8b4;
-      margin-top: 5px;
-      margin-bottom: 0;
-      text-shadow: 0 1px 4px #181410;
       font-weight: bold;
+      margin-bottom: 4px;
+      margin-top: 0;
+    }
+    .skill-detail .skill-detail-level {
+      font-weight: bold;
+      color: #c2b280;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+    .skill-detail .skill-detail-desc {
+      margin-bottom: 16px;
+      color: #b4aa89;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.08rem;
+      font-weight: 400;
+    }
+    .skill-detail .skill-detail-label {
+      font-weight: bold;
+      color: #e4d8b4;
+      margin-bottom: 4px;
+      margin-top: 14px;
+      font-size: 1.08rem;
+      font-family: 'Montserrat', Arial, sans-serif;
+      display: block;
+    }
+    .skill-detail .skill-detail-section {
+      margin-bottom: 6px;
+      color: #b4aa89;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.08rem;
     }
     /* Quest log: bordered cards */
     .quest-journal {
@@ -270,6 +302,12 @@
       margin-bottom: 48px;
       display: block;
       width: 100%;
+      position: relative;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .quest-card:hover {
+      border-color: #c2b280;
     }
     .quest-top {
       display: flex;
@@ -323,47 +361,33 @@
       margin-right: 18px;
       margin-bottom: 10px;
     }
-    .quest-expand {
-      font-size: 1.4rem;
-      color: #8c4444;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: 'MedievalSharp', cursive;
-      transition: color 0.2s;
-      margin-right: 16px;
-      margin-bottom: 0;
-    }
-    .quest-card.active .quest-expand {
-      color: #c2b280;
-    }
-    .arrow-next {
-      position: absolute;
-      right: 18px;
+    .arrow-next-fixed {
+      position: fixed;
+      right: 32px;
       top: 50%;
       transform: translateY(-50%);
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: #e4d8b4;
-      background: rgba(24,18,15,0.1);
-      border: 2px solid #e4d8b4;
+      background: rgba(24,18,15,0.15);
+      border: 2.5px solid #e4d8b4;
       border-radius: 50%;
-      width: 52px;
-      height: 52px;
+      width: 58px;
+      height: 58px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 2px 8px #e4d8b444;
-      z-index: 9;
+      z-index: 20;
       transition: background 0.2s, box-shadow 0.2s;
     }
-    .arrow-next:hover {
+    .arrow-next-fixed:hover {
       background: #e4d8b4;
       color: #8c4444;
       box-shadow: 0 2px 18px #e4d8b4cc;
     }
-    .panel {
-      position: relative;
+    @media (max-width: 700px) {
+      .arrow-next-fixed {right: 8px; width:38px; height:38px; font-size:1.8rem;}
     }
     .contact-group, .lang-group {
       display: flex;
@@ -386,25 +410,6 @@
     }
     .contact-link:hover {
       color: #8c4444;
-    }
-    @media (max-width: 900px) {
-      .panel {padding: 0 2vw;}
-      .hero-headline {font-size:2rem;}
-      .hero-intro {font-size:1rem;}
-      .skill-detail {padding:14px 8px; font-size:1rem;}
-      .quest-card {padding: 14px 2vw 10px 2vw;}
-    }
-    @media (max-width: 700px) {
-      .nav {padding: 0 2vw;}
-      .section-title {font-size:1.2rem;}
-      .panel {padding: 0;}
-      .stat-group {flex-direction:column; gap:12px;}
-      .skill-tree-canvas {width:94vw; height:94vw; min-width:250px; min-height:250px;}
-      .skill-detail {font-size:0.95rem;}
-      .quest-journal {gap:28px;}
-      .quest-card {padding: 10px 1vw 8px 1vw;}
-      .quest-icon {font-size:1.6rem;}
-      .arrow-next {right: 2vw; width:38px; height:38px; font-size:1.8rem;}
     }
   </style>
 </head>
@@ -434,8 +439,7 @@
         Data-driven strategist, creative communicator, and passionate gamer.<br>
         Welcome to my fantasy CV adventure!
       </div>
-      <button class="hero-btn" onclick="showSection('profile')">Begin Your Quest</button>
-      <span class="arrow-next" onclick="showSection('profile')">&#10148;</span>
+      <!-- Arrow handled by JS globally -->
     </section>
     <!-- Character Sheet Panel -->
     <section id="profile-section" class="panel" style="display:none;">
@@ -451,7 +455,6 @@
         <div class="stat-card">🎲 3 Years experience</div>
         <div class="stat-card">📜 Active Project Management course</div>
       </div>
-      <span class="arrow-next" onclick="showSection('skills')">&#10148;</span>
     </section>
     <!-- Skills Panel -->
     <section id="skills-section" class="panel" style="display:none;">
@@ -461,19 +464,18 @@
           <canvas id="skillTreeCanvas" class="skill-tree-canvas" width="690" height="690"></canvas>
         </div>
         <div>
-          <div id="skillDetail" class="skill-detail" style="display:none;">
+          <div id="skillDetail" class="skill-detail">
             <button class="skill-detail-close" onclick="closeSkillDetail()">&times;</button>
-            <div class="skill-name" id="skillDetailName"></div>
-            <span class="skill-level" id="skillDetailLevel"></span>
-            <div class="skill-desc" id="skillDetailDesc"></div>
-            <div class="skill-section-label">What Dragon Shield needs:</div>
-            <div class="skill-section-content" id="skillDetailNeeds"></div>
-            <div class="skill-section-label">How I can contribute:</div>
-            <div class="skill-section-content" id="skillDetailContrib"></div>
+            <div class="skill-detail-title" id="skillDetailName"></div>
+            <span class="skill-detail-level" id="skillDetailLevel"></span>
+            <div class="skill-detail-desc" id="skillDetailDesc"></div>
+            <span class="skill-detail-label">What Dragon Shield needs:</span>
+            <div class="skill-detail-section" id="skillDetailNeeds"></div>
+            <span class="skill-detail-label">How I can contribute:</span>
+            <div class="skill-detail-section" id="skillDetailContrib"></div>
           </div>
         </div>
       </div>
-      <span class="arrow-next" onclick="showSection('quests')">&#10148;</span>
       <div style="text-align:center; margin: 22px 0 0 0;">
         <span class="badge">Lv. 1: Novice</span>
         <span class="badge">Lv. 2: Apprentice</span>
@@ -494,7 +496,6 @@
       <div class="quest-journal">
         <!-- QUEST 1 -->
         <div class="quest-card" onclick="toggleQuest(this)">
-          <button class="quest-expand">🛡️</button>
           <div class="quest-top">
             <span class="quest-icon">🛡️</span>
             <div>
@@ -514,7 +515,6 @@
         </div>
         <!-- QUEST 2 -->
         <div class="quest-card" onclick="toggleQuest(this)">
-          <button class="quest-expand">🐉</button>
           <div class="quest-top">
             <span class="quest-icon">🐉</span>
             <div>
@@ -533,7 +533,6 @@
         </div>
         <!-- QUEST 3 -->
         <div class="quest-card" onclick="toggleQuest(this)">
-          <button class="quest-expand">📜</button>
           <div class="quest-top">
             <span class="quest-icon">📜</span>
             <div>
@@ -550,7 +549,6 @@
           <div class="quest-status">Completed</div>
         </div>
       </div>
-      <span class="arrow-next" onclick="showSection('contact')">&#10148;</span>
     </section>
     <!-- Guild Hall Panel -->
     <section id="contact-section" class="panel" style="display:none;">
@@ -570,7 +568,6 @@
         <span>Danish – Native</span>
         <span>English – Fluent</span>
       </div>
-      <span class="arrow-next" onclick="showSection('motivation')">&#10148;</span>
     </section>
     <!-- Motivation Panel -->
     <section id="motivation-section" class="panel" style="display:none;">
@@ -591,10 +588,20 @@
       </div>
     </section>
   </main>
+  <!-- Fixed right-side navigation arrow -->
+  <span id="arrowNext" class="arrow-next-fixed" style="display:none;" onclick="goToNextPage()">&#10148;</span>
   <script>
-    // Page navigation
+    // Define your page order
+    const pageOrder = [
+      'hero',
+      'profile',
+      'skills',
+      'quests',
+      'contact',
+      'motivation'
+    ];
     function showSection(section, btn) {
-      ['hero','profile','skills','quests','contact','motivation'].forEach(s => {
+      pageOrder.forEach(s => {
         document.getElementById(s+'-section').style.display = (s===section) ? 'flex' : 'none';
       });
       document.querySelectorAll('.menu-btn').forEach(b=>b.classList.remove('active'));
@@ -602,6 +609,24 @@
       window.scrollTo({top:0,behavior:'smooth'});
       closeSkillDetail();
       if(section === "skills") setTimeout(drawSkillTree,100);
+
+      // Show/hide and update fixed arrow
+      const idx = pageOrder.indexOf(section);
+      const arrow = document.getElementById('arrowNext');
+      if (arrow) {
+        if (idx < pageOrder.length - 1) {
+          arrow.style.display = "flex";
+        } else {
+          arrow.style.display = "none";
+        }
+        arrow.setAttribute('data-next', pageOrder[idx+1]);
+      }
+    }
+    function goToNextPage() {
+      const arrow = document.getElementById('arrowNext');
+      if (!arrow) return;
+      const next = arrow.getAttribute('data-next');
+      if (next) showSection(next);
     }
 
     // Skill tree rendering
@@ -671,7 +696,6 @@
         ctx.textAlign = "center";
         ctx.textBaseline = "top";
         let label = node.name;
-        // If label is long, wrap to two lines
         if (label.length > 18) {
           let words = label.split(" ");
           let mid = Math.floor(words.length/2);
@@ -754,28 +778,37 @@
         contribution: "Personal gaming experience from MMO raids to console gaming provides authentic insight into gaming community needs, player psychology and what creates passion for gaming."
       }
     ];
+
     function showSkillDetail(idx) {
       const skill = skills[idx];
+      document.getElementById('skillDetail').style.display = 'block';
       document.getElementById('skillDetailName').textContent = skill.name;
       document.getElementById('skillDetailLevel').textContent = `Level ${skill.level} (${["Novice","Apprentice","Adept","Master","Legendary"][skill.level-1]})`;
       document.getElementById('skillDetailDesc').textContent = skill.description;
       document.getElementById('skillDetailNeeds').textContent = skill.needsDescription;
       document.getElementById('skillDetailContrib').textContent = skill.contribution;
-      document.getElementById('skillDetail').style.display = 'block';
     }
     function closeSkillDetail() {
       document.getElementById('skillDetail').style.display = 'none';
     }
-    document.addEventListener('DOMContentLoaded',drawSkillTree);
-    document.querySelectorAll('.menu-btn').forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        setTimeout(drawSkillTree,120);
-      });
-    });
 
+    // Only show details when card is open, not both icons
     function toggleQuest(card) {
       card.classList.toggle('active');
     }
+
+    // Initial page load
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('hero');
+      drawSkillTree();
+      closeSkillDetail();
+    });
+    document.querySelectorAll('.menu-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        setTimeout(drawSkillTree,120);
+        closeSkillDetail();
+      });
+    });
   </script>
 </body>
 </html>
