@@ -28,14 +28,14 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      filter: blur(2px) brightness(0.6) grayscale(0.3);
+      filter: blur(2px) brightness(0.6) grayscale(0.4);
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(20,12,8,0.88);
+      background: rgba(24,18,15,0.96);
       pointer-events: none;
     }
     .nav {
@@ -72,64 +72,13 @@
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
       letter-spacing: 1px;
+      font-family: 'MedievalSharp', cursive;
     }
     .menu-btn.active, .menu-btn:hover {
       background: #ffd700;
       color: #a62c2a;
       box-shadow: 0 2px 14px #a62c2a55;
       font-weight: bold;
-    }
-    .hero {
-      position: relative;
-      z-index: 3;
-      min-height: 100vh;
-      width: 100vw;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .hero-content {
-      margin-top: -70px; /* center relative to nav bar */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-title {
-      font-family: 'MedievalSharp', cursive;
-      font-size: 4rem;
-      color: #ffd700;
-      text-shadow: 0 3px 26px #a62c2a, 0 0 8px #fff;
-      margin-bottom: 20px;
-    }
-    .hero-subtitle {
-      font-family: 'MedievalSharp', cursive;
-      font-size: 2rem;
-      color: #a62c2a;
-      margin-bottom: 24px;
-      letter-spacing: 1px;
-      text-shadow: 0 2px 14px #ffd700;
-    }
-    .hero-cta {
-      padding: 16px 40px;
-      font-size: 1.4rem;
-      font-family: 'MedievalSharp', cursive;
-      background: #ffd700;
-      color: #a62c2a;
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 2px 14px #a62c2a55;
-      cursor: pointer;
-      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
-      margin-top: 18px;
-      margin-bottom: 8px;
-      font-weight: bold;
-    }
-    .hero-cta:hover {
-      background: #a62c2a;
-      color: #ffd700;
-      box-shadow: 0 2px 22px #ffd700bb;
     }
     .main-content {
       margin-top: 70px;
@@ -142,15 +91,15 @@
     .panel {
       position: relative;
       z-index: 4;
-      background: rgba(30,18,12,0.92);
+      background: rgba(30,18,12,0.93);
       border-radius: 18px;
-      box-shadow: 0 4px 32px #a62c2a66;
+      box-shadow: 0 4px 32px #a62c2a33;
       max-width: 900px;
       min-width: 330px;
       margin: 0 auto;
       padding: 48px 38px;
-      color: #ffd700;
-      font-size: 1.19rem;
+      color: #e6d9b1;
+      font-size: 1.15rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -185,7 +134,7 @@
       font-size: 1.1rem;
       font-family: 'MedievalSharp', cursive;
       padding: 14px 22px;
-      box-shadow: 0 2px 10px #a62c2a55;
+      box-shadow: 0 2px 10px #a62c2a22;
       min-width: 160px;
       text-align: center;
       font-weight: bold;
@@ -209,20 +158,20 @@
       max-width: 400px;
     }
     .skill-tree-canvas {
-      background: #1a0f0b;
+      background: #18120f;
       border: 2px solid #ffd700;
       border-radius: 18px;
       margin-bottom: 20px;
       width: 360px;
       height: 360px;
       position: relative;
-      box-shadow: 0 2px 18px #a62c2a55;
+      box-shadow: 0 2px 18px #a62c2a22;
     }
     .skill-detail {
-      background: #a62c2a;
+      background: #312118;
       color: #ffd700;
       border-radius: 14px;
-      box-shadow: 0 2px 18px #ffd70088;
+      box-shadow: 0 2px 18px #ffd70044;
       padding: 24px 28px;
       min-width: 270px;
       max-width: 340px;
@@ -251,7 +200,7 @@
     }
     .skill-level {
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       background: #ffd700;
       color: #a62c2a;
       padding: 3px 12px;
@@ -268,6 +217,7 @@
     }
     .skill-desc {
       margin-bottom: 12px;
+      color: #e6d9b1;
     }
     .skill-section-label {
       font-weight: bold;
@@ -278,7 +228,7 @@
     }
     .skill-section-content {
       margin-bottom: 6px;
-      color: #fff2b2;
+      color: #e6d9b1;
     }
     .badge-list {
       display: flex;
@@ -295,7 +245,7 @@
       font-family: 'MedievalSharp', cursive;
       font-size: 1rem;
       padding: 6px 18px;
-      box-shadow: 0 2px 8px #a62c2a88;
+      box-shadow: 0 2px 8px #a62c2a44;
       border: 2px solid #a62c2a;
       transition: box-shadow 0.2s;
       font-weight: bold;
@@ -314,12 +264,12 @@
       margin-bottom: 14px;
     }
     .quest-card {
-      background: #a62c2a;
+      background: #312118;
       border-radius: 13px;
       border: 2px solid #ffd700;
       color: #ffd700;
       font-family: 'MedievalSharp', cursive;
-      box-shadow: 0 2px 12px #a62c2a77;
+      box-shadow: 0 2px 12px #a62c2a22;
       padding: 18px 20px;
       margin-bottom: 8px;
       position: relative;
@@ -348,7 +298,7 @@
       margin-bottom: 7px;
       display: none;
       animation: fadeInPanel 0.5s;
-      color: #fff2b2;
+      color: #e6d9b1;
     }
     .quest-card.active .quest-details {
       display: block;
@@ -405,6 +355,7 @@
     }
     @media (max-width: 700px) {
       .nav {padding: 0 2vw;}
+      .section-title {font-size:1.5rem;}
       .hero-title {font-size:2.1rem;}
       .hero-subtitle {font-size:1.1rem;}
       .panel {padding: 16px 2vw;}
@@ -417,35 +368,22 @@
   </style>
 </head>
 <body>
-  <!-- Background image and overlay under all content -->
   <div class="background-holder">
     <img src="https://cdnb.artstation.com/p/assets/images/images/045/541/254/large/anna-koutsidou-dragon-rider-final.jpg?1643144948" alt="Fantasy Dragon" class="hero-bg"/>
     <div class="hero-overlay"></div>
   </div>
-  <!-- Navigation Bar -->
   <nav class="nav">
     <div class="logo">DS</div>
     <div class="menu">
-      <button class="menu-btn active" onclick="showSection('hero',this)">Home</button>
-      <button class="menu-btn" onclick="showSection('profile',this)">Character Sheet</button>
+      <button class="menu-btn active" onclick="showSection('profile',this)">Character Sheet</button>
       <button class="menu-btn" onclick="showSection('skills',this)">Skill Tree</button>
       <button class="menu-btn" onclick="showSection('quests',this)">Quest Log</button>
       <button class="menu-btn" onclick="showSection('contact',this)">Guild Hall</button>
       <button class="menu-btn" onclick="showSection('motivation',this)">Epic Motivation</button>
     </div>
   </nav>
-  <!-- Hero Section -->
-  <section id="hero-section" class="hero">
-    <div class="hero-content">
-      <div class="hero-title">Dragon & Slayer</div>
-      <div class="hero-subtitle">Anne Sofie Mikkelsen – Product Manager & Dragon Tamer</div>
-      <button class="hero-cta" onclick="showSection('profile')">View My Character Sheet</button>
-    </div>
-  </section>
-  <!-- Main Panels -->
-  <main id="main-content">
-    <!-- Character Sheet Panel -->
-    <section id="profile-section" class="panel" style="display:none;">
+  <main class="main-content">
+    <section id="profile-section" class="panel" style="display:flex;">
       <div class="section-title">Character Sheet</div>
       <div style="text-align:center; margin-bottom:20px;">
         Data-driven product strategist with creative approach and gaming passion.<br/>
@@ -506,7 +444,7 @@
             Built business cases using sales data and market trends for strategic decisions.<br/>
             Facilitated collaboration between design, marketing and sales teams.<br/>
             Managed and trained student worker while maintaining oversight of all brand operations.<br/>
-            <span style="color:#fff2b2;">PM-relevant: Responsibility for 50+ brand portfolio, ensuring consistent updates and compliance across all accounts. Helped analyze market performance for strategic decisions.</span>
+            <span style="color:#e6d9b1;">PM-relevant: Responsibility for 50+ brand portfolio, ensuring consistent updates and compliance across all accounts. Helped analyze market performance for strategic decisions.</span>
           </div>
         </div>
         <div class="quest-card" onclick="toggleQuest(this)">
@@ -517,7 +455,7 @@
             Developed content and newsletters with focus on sustainable products.<br/>
             Worked with storytelling and communication around environmentally conscious values.<br/>
             Contributed to brand's visual expression and marketing materials.<br/>
-            <span style="color:#fff2b2;">PM-relevant: Developed content strategies and storytelling around sustainable products, learning to communicate complex environmental values in ways that resonate with audiences.</span>
+            <span style="color:#e6d9b1;">PM-relevant: Developed content strategies and storytelling around sustainable products, learning to communicate complex environmental values in ways that resonate with audiences.</span>
           </div>
         </div>
         <div class="quest-card" onclick="toggleQuest(this)">
@@ -527,7 +465,7 @@
           <div class="quest-details">
             Gathered market insights through data analysis and customer feedback for assortment optimization.<br/>
             Coordinated development projects between purchasing, marketing and supply chain teams.<br/>
-            <span style="color:#fff2b2;">PM-relevant: Tracked seasonal product performance and adjusted roadmap based on real-time sales data — core competency for post-launch tracking and roadmap adjustment.</span>
+            <span style="color:#e6d9b1;">PM-relevant: Tracked seasonal product performance and adjusted roadmap based on real-time sales data — core competency for post-launch tracking and roadmap adjustment.</span>
           </div>
         </div>
       </div>
@@ -573,19 +511,15 @@
   <script>
     // Navigation logic
     function showSection(section, btn) {
-      // Hide hero, all panels
-      document.getElementById('hero-section').style.display = (section === 'hero') ? 'flex' : 'none';
       ['profile','skills','quests','contact','motivation'].forEach(s => {
         document.getElementById(s+'-section').style.display = (s===section) ? 'flex' : 'none';
       });
       // Set active menu button
       document.querySelectorAll('.menu-btn').forEach(b=>b.classList.remove('active'));
       if (btn && btn.classList) btn.classList.add('active');
-      else {
-        document.querySelectorAll('.menu-btn')[1].classList.add('active');
-      }
       window.scrollTo({top:0,behavior:'smooth'});
       closeSkillDetail();
+      if(section === "skills") setTimeout(drawSkillTree,100);
     }
     // Quest card expand/collapse
     function toggleQuest(card) {
@@ -652,72 +586,82 @@
         contribution: "Personal gaming experience from MMO raids to console gaming provides authentic insight into gaming community needs, player psychology and what creates passion for gaming."
       }
     ];
-    // Draw skill tree on canvas WoW-style radial
+    // Draw skill tree on canvas WoW-style vertical branches
     function drawSkillTree() {
       const canvas = document.getElementById('skillTreeCanvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       ctx.clearRect(0,0,canvas.width,canvas.height);
-      const cx = canvas.width/2, cy = canvas.height/2;
-      const radius = 120;
-      // Draw connecting lines
-      for (let i=0; i<skills.length; i++) {
-        const angle = (i/skills.length)*2*Math.PI - Math.PI/2;
-        const x = cx + Math.cos(angle)*radius;
-        const y = cy + Math.sin(angle)*radius;
-        ctx.strokeStyle = "#ffd700";
-        ctx.lineWidth = 2;
+      const cx = canvas.width/2;
+      const topY = 60;
+      const nodeSpacingY = 36;
+      // Layout: 1 top, 2 below, 2 below, 3 at bottom (branching)
+      const nodePos = [
+        {x:cx, y:topY}, // Market Analysis
+        {x:cx-70, y:topY+nodeSpacingY*2}, // Data Analysis
+        {x:cx+70, y:topY+nodeSpacingY*2}, // Cross-functional
+        {x:cx-70, y:topY+nodeSpacingY*4}, // Creative Comm
+        {x:cx+70, y:topY+nodeSpacingY*4}, // Product Dev
+        {x:cx-110, y:topY+nodeSpacingY*6}, // Business Cases
+        {x:cx, y:topY+nodeSpacingY*6}, // Performance Tracking
+        {x:cx+110, y:topY+nodeSpacingY*6} // Gaming Community
+      ];
+      // Connections
+      const lines = [
+        [0,1],[0,2],
+        [1,3],[1,4],
+        [2,4],[2,3],
+        [3,5],[4,7],[4,6]
+      ];
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#ffd700";
+      ctx.shadowColor = "#a62c2a";
+      ctx.shadowBlur = 5;
+      for(const [a,b] of lines){
         ctx.beginPath();
-        ctx.moveTo(cx,cy);
-        ctx.lineTo(x,y);
+        ctx.moveTo(nodePos[a].x,nodePos[a].y);
+        ctx.lineTo(nodePos[b].x,nodePos[b].y);
         ctx.stroke();
       }
-      // Draw skill nodes
-      for (let i=0; i<skills.length; i++) {
+      ctx.shadowBlur = 0;
+      // Draw nodes
+      for(let i=0;i<skills.length;i++){
         const skill = skills[i];
-        const angle = (i/skills.length)*2*Math.PI - Math.PI/2;
-        const x = cx + Math.cos(angle)*radius;
-        const y = cy + Math.sin(angle)*radius;
+        const pos = nodePos[i];
         ctx.beginPath();
-        ctx.arc(x, y, 26, 0, 2*Math.PI);
+        ctx.arc(pos.x,pos.y,28,0,2*Math.PI);
         ctx.fillStyle = skill.level >= 4 ? "#ffd700" : "#a62c2a";
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 4;
         ctx.shadowColor = skill.level >= 4 ? "#ffd700" : "#a62c2a";
         ctx.shadowBlur = 10;
-        ctx.strokeStyle = "#fff";
-        ctx.lineWidth = 3;
         ctx.fill();
         ctx.stroke();
         ctx.shadowBlur = 0;
-        // Skill icon/initial
+        // Node icon/initial (first letter)
+        ctx.font = "bold 24px MedievalSharp, Arial";
         ctx.fillStyle = skill.level >= 4 ? "#a62c2a" : "#ffd700";
-        ctx.font = "bold 22px MedievalSharp, Arial";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(skill.name.split(' ')[0][0], x, y);
+        ctx.fillText(skill.name.split(' ')[0][0], pos.x, pos.y);
       }
-      // Draw skill labels
-      for (let i=0; i<skills.length; i++) {
+      // Draw labels
+      for(let i=0;i<skills.length;i++){
         const skill = skills[i];
-        const angle = (i/skills.length)*2*Math.PI - Math.PI/2;
-        const x = cx + Math.cos(angle)*radius;
-        const y = cy + Math.sin(angle)*radius;
-        const lx = cx + Math.cos(angle)*(radius+42);
-        const ly = cy + Math.sin(angle)*(radius+42);
-        ctx.font = "bold 13px MedievalSharp, Arial";
-        ctx.fillStyle = "#ffd700";
-        ctx.textAlign = lx>cx ? "left" : "right";
-        ctx.textBaseline = "middle";
-        ctx.fillText(skill.name, lx, ly);
+        const pos = nodePos[i];
+        ctx.font = "bold 16px MedievalSharp, Arial";
+        ctx.fillStyle = "#e6d9b1";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        ctx.fillText(skill.name, pos.x, pos.y+32);
       }
       // Click logic
-      canvas.onclick = function(e) {
+      canvas.onclick = function(e){
         const rect = canvas.getBoundingClientRect();
         const mx = e.clientX-rect.left, my = e.clientY-rect.top;
-        for (let i=0; i<skills.length; i++) {
-          const angle = (i/skills.length)*2*Math.PI - Math.PI/2;
-          const x = cx + Math.cos(angle)*radius;
-          const y = cy + Math.sin(angle)*radius;
-          if (Math.hypot(mx-x, my-y)<26) {
+        for(let i=0;i<skills.length;i++){
+          const pos = nodePos[i];
+          if(Math.hypot(mx-pos.x, my-pos.y)<28){
             showSkillDetail(i);
             break;
           }
@@ -738,21 +682,11 @@
       document.getElementById('skillDetail').style.display = 'none';
     }
     document.addEventListener('DOMContentLoaded',drawSkillTree);
-    // Redraw on panel show
-    function redrawOnShow() {
-      if (document.getElementById('skills-section').style.display === 'flex') {
-        drawSkillTree();
-      }
-    }
-    // Ensure redraw on nav
+    // Redraw on nav
     document.querySelectorAll('.menu-btn').forEach(btn=>{
       btn.addEventListener('click', ()=>{
-        setTimeout(redrawOnShow,120);
+        setTimeout(drawSkillTree,120);
       });
-    });
-    // Redraw if activated from CTA
-    document.querySelector('.hero-cta').addEventListener('click', ()=>{
-      setTimeout(redrawOnShow,120);
     });
   </script>
 </body>
