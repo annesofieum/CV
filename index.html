@@ -184,20 +184,21 @@
       color: #c2b280;
       box-shadow: 0 2px 22px #c2b280bb;
     }
+    /* Skill tree styling */
     .skill-tree-detail-container {
       display: flex;
       gap: 50px;
       align-items: flex-start;
     }
     .skill-tree-canvas-holder {
-      padding: 40px 40px 40px 40px;
+      padding: 0; /* No padding */
       background: none;
       position: relative;
     }
     .skill-tree-canvas {
       background: #181410;
       border: none;
-      border-radius: 22px;
+      border-radius: 0;
       margin-bottom: 20px;
       width: 690px;
       height: 690px;
@@ -621,7 +622,6 @@
       closeSkillDetail();
       if(section === "skills") setTimeout(drawSkillTree,100);
 
-      // Show/hide and update fixed arrow
       const idx = pageOrder.indexOf(section);
       const arrow = document.getElementById('arrowNext');
       if (arrow) {
@@ -647,8 +647,8 @@
       const ctx = canvas.getContext('2d');
       ctx.clearRect(0,0,canvas.width,canvas.height);
 
-      // Node positions with generous padding from border
-      const PAD = 50;
+      // Use extra padding so labels never get cut off
+      const PAD = 70;
       const nodes = [
         { name: "Market Analysis", icon: "🐉", x: 345, y: PAD + 30 },
         { name: "Data Analysis", icon: "🛡️", x: PAD + 90, y: PAD + 120 },
@@ -685,7 +685,6 @@
       // Draw nodes
       for (let i=0; i<nodes.length; i++) {
         const node = nodes[i];
-        // Node circle
         ctx.beginPath();
         ctx.arc(node.x, node.y, 40, 0, 2*Math.PI);
         ctx.fillStyle = (i === 4 || i === 5 || i === 6) ? "#8c4444" : "#c2b280";
@@ -696,13 +695,12 @@
         ctx.fill();
         ctx.stroke();
         ctx.shadowBlur = 0;
-        // Icon
         ctx.font = "38px serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = (i === 4 || i === 5 || i === 6) ? "#e4d8b4" : "#8c4444";
         ctx.fillText(node.icon, node.x, node.y);
-        // Label below node, with more space and wrapping
+        // Label below node, extra space
         ctx.font = "bold 21px 'MedievalSharp', cursive";
         ctx.fillStyle = "#e4d8b4";
         ctx.textAlign = "center";
@@ -718,7 +716,6 @@
         }
       }
 
-      // Click logic
       canvas.onclick = function(e){
         const rect = canvas.getBoundingClientRect();
         const mx = e.clientX-rect.left, my = e.clientY-rect.top;
@@ -822,4 +819,3 @@
   </script>
 </body>
 </html>
-
