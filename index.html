@@ -88,7 +88,6 @@
       justify-content: center;
       align-items: center;
     }
-    /* Remove panel backgrounds for flowy feel */
     .panel {
       position: relative;
       z-index: 4;
@@ -206,8 +205,8 @@
     }
     .skill-tree-canvas {
       background: #181410;
-      border: none;
-      border-radius: 18px;
+      border: 4px solid #e4d8b4;
+      border-radius: 22px;
       margin-bottom: 20px;
       width: 690px;
       height: 690px;
@@ -243,21 +242,31 @@
       cursor: pointer;
       font-weight: bold;
     }
-    /* Quest log: flowy style */
+    .skill-label {
+      font-family: 'MedievalSharp', cursive;
+      font-size: 1.18rem;
+      color: #e4d8b4;
+      margin-top: 5px;
+      margin-bottom: 0;
+      text-shadow: 0 1px 4px #181410;
+      font-weight: bold;
+    }
+    /* Quest log: bordered cards */
     .quest-journal {
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 64px;
+      gap: 48px;
       align-items: center;
       max-width: 1200px;
       margin-top: 20px;
     }
     .quest-card {
       background: none;
-      border: none;
+      border: 2.5px solid #e4d8b4;
+      border-radius: 22px;
       box-shadow: none;
-      padding: 0;
+      padding: 24px 48px 16px 48px;
       margin-bottom: 48px;
       display: block;
       width: 100%;
@@ -328,6 +337,34 @@
     .quest-card.active .quest-expand {
       color: #c2b280;
     }
+    .arrow-next {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2.5rem;
+      color: #e4d8b4;
+      background: rgba(24,18,15,0.1);
+      border: 2px solid #e4d8b4;
+      border-radius: 50%;
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #e4d8b444;
+      z-index: 9;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .arrow-next:hover {
+      background: #e4d8b4;
+      color: #8c4444;
+      box-shadow: 0 2px 18px #e4d8b4cc;
+    }
+    .panel {
+      position: relative;
+    }
     .contact-group, .lang-group {
       display: flex;
       flex-direction: column;
@@ -355,7 +392,7 @@
       .hero-headline {font-size:2rem;}
       .hero-intro {font-size:1rem;}
       .skill-detail {padding:14px 8px; font-size:1rem;}
-      .quest-card {padding: 0;}
+      .quest-card {padding: 14px 2vw 10px 2vw;}
     }
     @media (max-width: 700px) {
       .nav {padding: 0 2vw;}
@@ -365,8 +402,9 @@
       .skill-tree-canvas {width:94vw; height:94vw; min-width:250px; min-height:250px;}
       .skill-detail {font-size:0.95rem;}
       .quest-journal {gap:28px;}
-      .quest-card {padding: 0;}
+      .quest-card {padding: 10px 1vw 8px 1vw;}
       .quest-icon {font-size:1.6rem;}
+      .arrow-next {right: 2vw; width:38px; height:38px; font-size:1.8rem;}
     }
   </style>
 </head>
@@ -397,6 +435,7 @@
         Welcome to my fantasy CV adventure!
       </div>
       <button class="hero-btn" onclick="showSection('profile')">Begin Your Quest</button>
+      <span class="arrow-next" onclick="showSection('profile')">&#10148;</span>
     </section>
     <!-- Character Sheet Panel -->
     <section id="profile-section" class="panel" style="display:none;">
@@ -412,12 +451,13 @@
         <div class="stat-card">🎲 3 Years experience</div>
         <div class="stat-card">📜 Active Project Management course</div>
       </div>
+      <span class="arrow-next" onclick="showSection('skills')">&#10148;</span>
     </section>
     <!-- Skills Panel -->
     <section id="skills-section" class="panel" style="display:none;">
       <div class="section-title">Skill Tree</div>
       <div class="skill-tree-container">
-        <div class="skill-tree">
+        <div class="skill-tree" style="position:relative;">
           <canvas id="skillTreeCanvas" class="skill-tree-canvas" width="690" height="690"></canvas>
         </div>
         <div>
@@ -433,6 +473,7 @@
           </div>
         </div>
       </div>
+      <span class="arrow-next" onclick="showSection('quests')">&#10148;</span>
       <div style="text-align:center; margin: 22px 0 0 0;">
         <span class="badge">Lv. 1: Novice</span>
         <span class="badge">Lv. 2: Apprentice</span>
@@ -509,6 +550,7 @@
           <div class="quest-status">Completed</div>
         </div>
       </div>
+      <span class="arrow-next" onclick="showSection('contact')">&#10148;</span>
     </section>
     <!-- Guild Hall Panel -->
     <section id="contact-section" class="panel" style="display:none;">
@@ -528,6 +570,7 @@
         <span>Danish – Native</span>
         <span>English – Fluent</span>
       </div>
+      <span class="arrow-next" onclick="showSection('motivation')">&#10148;</span>
     </section>
     <!-- Motivation Panel -->
     <section id="motivation-section" class="panel" style="display:none;">
@@ -549,6 +592,7 @@
     </section>
   </main>
   <script>
+    // Page navigation
     function showSection(section, btn) {
       ['hero','profile','skills','quests','contact','motivation'].forEach(s => {
         document.getElementById(s+'-section').style.display = (s===section) ? 'flex' : 'none';
@@ -560,6 +604,7 @@
       if(section === "skills") setTimeout(drawSkillTree,100);
     }
 
+    // Skill tree rendering
     function drawSkillTree() {
       const canvas = document.getElementById('skillTreeCanvas');
       if (!canvas) return;
@@ -588,7 +633,7 @@
       ];
 
       // Draw connections first
-      ctx.strokeStyle = "#c2b280";
+      ctx.strokeStyle = "#e4d8b4";
       ctx.lineWidth = 5;
       ctx.globalAlpha = 0.6;
       for (let c of connections) {
@@ -607,9 +652,9 @@
         ctx.beginPath();
         ctx.arc(node.x, node.y, 40, 0, 2*Math.PI);
         ctx.fillStyle = (i === 4 || i === 5 || i === 6) ? "#8c4444" : "#c2b280";
-        ctx.strokeStyle = "#b4aa89";
-        ctx.lineWidth = 6;
-        ctx.shadowColor = "#c2b280";
+        ctx.strokeStyle = "#e4d8b4";
+        ctx.lineWidth = 5;
+        ctx.shadowColor = "#e4d8b4";
         ctx.shadowBlur = 10;
         ctx.fill();
         ctx.stroke();
@@ -618,23 +663,20 @@
         ctx.font = "38px serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillStyle = (i === 4 || i === 5 || i === 6) ? "#c2b280" : "#8c4444";
+        ctx.fillStyle = (i === 4 || i === 5 || i === 6) ? "#e4d8b4" : "#8c4444";
         ctx.fillText(node.icon, node.x, node.y);
-      }
-      // Draw labels below nodes
-      ctx.font = "bold 17px 'Montserrat', Arial";
-      ctx.fillStyle = "#b4aa89";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "top";
-      for (let i=0; i<nodes.length; i++) {
-        const node = nodes[i];
-        const label = node.name;
+        // Label below node
+        ctx.font = "bold 21px 'MedievalSharp', cursive";
+        ctx.fillStyle = "#e4d8b4";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "top";
+        let label = node.name;
         // If label is long, wrap to two lines
         if (label.length > 18) {
           let words = label.split(" ");
           let mid = Math.floor(words.length/2);
           ctx.fillText(words.slice(0,mid).join(" "), node.x, node.y+46);
-          ctx.fillText(words.slice(mid).join(" "), node.x, node.y+66);
+          ctx.fillText(words.slice(mid).join(" "), node.x, node.y+68);
         } else {
           ctx.fillText(label, node.x, node.y+46);
         }
