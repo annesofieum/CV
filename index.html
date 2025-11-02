@@ -214,11 +214,12 @@
       border: 2px solid #c2b280;
       border-radius: 18px;
       margin-bottom: 20px;
-      width: 900px;
-      height: 700px;
+      width: 690px;
+      height: 690px;
       position: relative;
       box-shadow: 0 2px 18px #8c444422;
       margin-top: 32px;
+      display: block;
     }
     .skill-detail {
       background: #2b1d14;
@@ -430,9 +431,9 @@
       }
       .skill-tree-canvas {
         width: 98vw;
-        height: 70vw;
-        max-width: 900px;
-        max-height: 700px;
+        height: 98vw;
+        max-width: 690px;
+        max-height: 690px;
       }
       .quest-card {
         max-width: 98vw;
@@ -512,7 +513,7 @@
       <div class="section-title">Skill Tree</div>
       <div class="skill-tree-container">
         <div class="skill-tree">
-          <canvas id="skillTreeCanvas" class="skill-tree-canvas" width="900" height="700"></canvas>
+          <canvas id="skillTreeCanvas" class="skill-tree-canvas" width="690" height="690"></canvas>
         </div>
         <div>
           <div id="skillDetail" class="skill-detail" style="display:none;">
@@ -655,7 +656,102 @@
       if(section === "skills") setTimeout(drawSkillTree,100);
     }
 
-    // WoW-style skill tree
+    // WoW-style skill tree - layout matching user image
+    function drawSkillTree() {
+      const canvas = document.getElementById('skillTreeCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+
+      // Node positions based on image proportions
+      const nodes = [
+        { name: "Market Analysis", icon: "🐉", x: 345, y: 80 },
+        { name: "Data Analysis", icon: "🛡️", x: 180, y: 200 },
+        { name: "Cross-functional Collaboration", icon: "🛡️", x: 510, y: 200 },
+        { name: "Creative Communication", icon: "🗡️", x: 180, y: 340 },
+        { name: "Product Development", icon: "🗡️", x: 510, y: 340 },
+        { name: "Business Cases", icon: "📜", x: 80, y: 470 },
+        { name: "Performance Tracking", icon: "📜", x: 345, y: 470 },
+        { name: "Gaming Community Insight", icon: "🐉", x: 610, y: 470 }
+      ];
+
+      // Connections (by index in nodes array)
+      const connections = [
+        [0,1],[0,2],
+        [1,3],[2,4],
+        [3,5],[4,7],
+        [3,4],[1,4],[2,3],
+        [4,6],[3,6]
+      ];
+
+      // Draw connections first
+      ctx.strokeStyle = "#c2b280";
+      ctx.lineWidth = 5;
+      ctx.globalAlpha = 0.6;
+      for (let c of connections) {
+        const from = nodes[c[0]], to = nodes[c[1]];
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      // Draw nodes
+      for (let i=0; i<nodes.length; i++) {
+        const node = nodes[i];
+        // Node circle
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, 40, 0, 2*Math.PI);
+        ctx.fillStyle = (i === 4 || i === 5 || i === 6) ? "#8c4444" : "#c2b280"; // sample: red for lower nodes
+        ctx.strokeStyle = "#b4aa89";
+        ctx.lineWidth = 6;
+        ctx.shadowColor = "#c2b280";
+        ctx.shadowBlur = 10;
+        ctx.fill();
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+        // Icon
+        ctx.font = "38px serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillStyle = (i === 4 || i === 5 || i === 6) ? "#c2b280" : "#8c4444";
+        ctx.fillText(node.icon, node.x, node.y);
+      }
+      // Draw labels below nodes
+      ctx.font = "bold 17px 'Montserrat', Arial";
+      ctx.fillStyle = "#b4aa89";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "top";
+      for (let i=0; i<nodes.length; i++) {
+        const node = nodes[i];
+        const label = node.name;
+        // If label is long, wrap to two lines
+        if (label.length > 18) {
+          let words = label.split(" ");
+          let mid = Math.floor(words.length/2);
+          ctx.fillText(words.slice(0,mid).join(" "), node.x, node.y+46);
+          ctx.fillText(words.slice(mid).join(" "), node.x, node.y+66);
+        } else {
+          ctx.fillText(label, node.x, node.y+46);
+        }
+      }
+
+      // Click logic
+      canvas.onclick = function(e){
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX-rect.left, my = e.clientY-rect.top;
+        for(let i=0;i<nodes.length;i++){
+          const node = nodes[i];
+          if(Math.hypot(mx-node.x, my-node.y)<44){
+            showSkillDetail(i);
+            break;
+          }
+        }
+      }
+    }
+
+    // Skill details data (order matches node array)
     const skills = [
       {
         name: "Market Analysis",
@@ -714,102 +810,6 @@
         contribution: "Personal gaming experience from MMO raids to console gaming provides authentic insight into gaming community needs, player psychology and what creates passion for gaming."
       }
     ];
-
-    // Draw skill tree on canvas: spaced nodes, muted colors, readable
-    function drawSkillTree() {
-      const canvas = document.getElementById('skillTreeCanvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      const cx = canvas.width/2;
-      const topY = 100;
-      const nodeSpacingY = 100;
-      const nodeSpacingX = 200;
-      // Layout: 1 top, 2 below, 2 below, 3 at bottom (branching, spaced)
-      const nodePos = [
-        {x:cx, y:topY}, // Market Analysis
-        {x:cx-nodeSpacingX, y:topY+nodeSpacingY*1.2}, // Data Analysis
-        {x:cx+nodeSpacingX, y:topY+nodeSpacingY*1.2}, // Cross-functional
-        {x:cx-nodeSpacingX/1.4, y:topY+nodeSpacingY*2.3}, // Creative Comm
-        {x:cx+nodeSpacingX/1.4, y:topY+nodeSpacingY*2.3}, // Product Dev
-        {x:cx-nodeSpacingX*1.1, y:topY+nodeSpacingY*3.4}, // Business Cases
-        {x:cx, y:topY+nodeSpacingY*3.4}, // Performance Tracking
-        {x:cx+nodeSpacingX*1.1, y:topY+nodeSpacingY*3.4} // Gaming Community
-      ];
-      // Connections
-      const lines = [
-        [0,1],[0,2],
-        [1,3],[1,4],
-        [2,4],[2,3],
-        [3,5],[4,7],[4,6]
-      ];
-      ctx.lineWidth = 5;
-      ctx.strokeStyle = "#b4aa89";
-      ctx.shadowColor = "#8c4444";
-      ctx.shadowBlur = 6;
-      for(const [a,b] of lines){
-        ctx.beginPath();
-        ctx.moveTo(nodePos[a].x,nodePos[a].y);
-        ctx.lineTo(nodePos[b].x,nodePos[b].y);
-        ctx.stroke();
-      }
-      ctx.shadowBlur = 0;
-      // Draw nodes
-      for(let i=0;i<skills.length;i++){
-        const skill = skills[i];
-        const pos = nodePos[i];
-        ctx.beginPath();
-        ctx.arc(pos.x,pos.y,44,0,2*Math.PI);
-        ctx.fillStyle = skill.level >= 4 ? "#c2b280" : "#8c4444";
-        ctx.strokeStyle = "#b4aa89";
-        ctx.lineWidth = 6;
-        ctx.shadowColor = skill.level >= 4 ? "#c2b280" : "#8c4444";
-        ctx.shadowBlur = 12;
-        ctx.fill();
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-        // Node icon
-        let icon = "🐉";
-        if (i === 0) icon = "🐉";
-        else if (i === 1 || i === 2) icon = "🛡️";
-        else if (i === 3 || i === 4) icon = "🗡️";
-        else if (i === 5 || i === 6) icon = "📜";
-        else if (i === 7) icon = "🐉";
-        ctx.font = "44px serif";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "middle";
-        ctx.fillStyle = skill.level >= 4 ? "#8c4444" : "#c2b280";
-        ctx.fillText(icon, pos.x, pos.y);
-        // Draw label below node, word-wrap if necessary
-        ctx.font = "bold 19px 'Montserrat', Arial";
-        ctx.fillStyle = "#b4aa89";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "top";
-        let label = skill.name;
-        // If label is long, split it
-        if (label.length > 22) {
-          let words = label.split(" ");
-          let mid = Math.floor(words.length/2);
-          label = words.slice(0,mid).join(" ") + "\n" + words.slice(mid).join(" ");
-        }
-        let lines = label.split("\n");
-        for(let l=0;l<lines.length;l++) {
-          ctx.fillText(lines[l], pos.x, pos.y+54+l*22);
-        }
-      }
-      // Click logic
-      canvas.onclick = function(e){
-        const rect = canvas.getBoundingClientRect();
-        const mx = e.clientX-rect.left, my = e.clientY-rect.top;
-        for(let i=0;i<skills.length;i++){
-          const pos = nodePos[i];
-          if(Math.hypot(mx-pos.x, my-pos.y)<44){
-            showSkillDetail(i);
-            break;
-          }
-        }
-      }
-    }
     // Show skill details
     function showSkillDetail(idx) {
       const skill = skills[idx];
