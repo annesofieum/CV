@@ -11,7 +11,7 @@
       padding: 0;
       min-height: 100vh;
       font-family: 'Montserrat', Arial, sans-serif;
-      background: #15192c;
+      background: #18120f;
       overflow-x: hidden;
     }
     .background-holder {
@@ -28,34 +28,34 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      filter: blur(2px) brightness(0.7) saturate(1.1);
+      filter: blur(2px) brightness(0.6) grayscale(0.3);
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
       width: 100vw;
       height: 100vh;
-      background: linear-gradient(180deg,rgba(22,24,38,0.85) 0%,rgba(38,22,30,0.6) 100%);
+      background: rgba(20,12,8,0.88);
       pointer-events: none;
     }
     .nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 2;
+      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 6vw;
       height: 70px;
-      background: rgba(22,24,38,0.94);
-      box-shadow: 0 2px 18px #232d4777;
+      background: #1a0f0b;
+      box-shadow: 0 2px 18px #1a0f0b77;
       font-family: 'MedievalSharp', cursive;
     }
     .logo {
       font-size: 2.2rem;
-      color: #bfcfff;
+      color: #ffd700;
       letter-spacing: 2px;
-      text-shadow: 0 2px 12px #5979af;
+      text-shadow: 0 2px 12px #a62c2a;
     }
     .menu {
       display: flex;
@@ -66,7 +66,7 @@
       border: none;
       font-family: inherit;
       font-size: 1.08rem;
-      color: #bfcfff;
+      color: #ffd700;
       padding: 8px 18px;
       border-radius: 10px;
       cursor: pointer;
@@ -74,9 +74,10 @@
       letter-spacing: 1px;
     }
     .menu-btn.active, .menu-btn:hover {
-      background: linear-gradient(90deg,#3751a0 30%,#ffd700 100%);
-      color: #1a0b18;
-      box-shadow: 0 2px 14px #5979af99;
+      background: #ffd700;
+      color: #a62c2a;
+      box-shadow: 0 2px 14px #a62c2a55;
+      font-weight: bold;
     }
     .hero {
       position: relative;
@@ -84,63 +85,77 @@
       min-height: 100vh;
       width: 100vw;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      animation: fadeIn 1.2s;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px);}
-      to { opacity: 1; transform: translateY(0);}
+    .hero-content {
+      margin-top: -70px; /* center relative to nav bar */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .hero-title {
       font-family: 'MedievalSharp', cursive;
       font-size: 4rem;
-      color: #bfcfff;
-      text-shadow: 0 3px 26px #3751a0, 0 0 8px #fff;
+      color: #ffd700;
+      text-shadow: 0 3px 26px #a62c2a, 0 0 8px #fff;
       margin-bottom: 20px;
     }
     .hero-subtitle {
       font-family: 'MedievalSharp', cursive;
       font-size: 2rem;
-      color: #ffd700;
+      color: #a62c2a;
       margin-bottom: 24px;
       letter-spacing: 1px;
-      text-shadow: 0 2px 14px #3751a0;
+      text-shadow: 0 2px 14px #ffd700;
     }
     .hero-cta {
       padding: 16px 40px;
       font-size: 1.4rem;
       font-family: 'MedievalSharp', cursive;
-      background: linear-gradient(90deg,#af354d 30%,#ffd700 100%);
-      color: #1a0b18;
+      background: #ffd700;
+      color: #a62c2a;
       border: none;
       border-radius: 15px;
-      box-shadow: 0 2px 14px #ffd70055;
+      box-shadow: 0 2px 14px #a62c2a55;
       cursor: pointer;
       transition: background 0.22s, color 0.22s, box-shadow 0.22s;
       margin-top: 18px;
       margin-bottom: 8px;
+      font-weight: bold;
     }
     .hero-cta:hover {
-      background: linear-gradient(90deg,#ffd700 40%,#af354d 100%);
-      color: #290a2f;
+      background: #a62c2a;
+      color: #ffd700;
       box-shadow: 0 2px 22px #ffd700bb;
     }
-    /* Glass panel for sections */
+    .main-content {
+      margin-top: 70px;
+      min-height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
     .panel {
       position: relative;
       z-index: 4;
-      background: rgba(40,55,87,0.12);
+      background: rgba(30,18,12,0.92);
       border-radius: 18px;
-      box-shadow: 0 4px 32px #232d4777;
-      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 32px #a62c2a66;
       max-width: 900px;
-      margin: 60px auto;
-      padding: 42px 38px;
-      color: #c0c9e5;
+      min-width: 330px;
+      margin: 0 auto;
+      padding: 48px 38px;
+      color: #ffd700;
       font-size: 1.19rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 60vh;
       animation: fadeInPanel 1s;
     }
     @keyframes fadeInPanel {
@@ -150,10 +165,10 @@
     .section-title {
       font-family: 'MedievalSharp', cursive;
       font-size: 2.2rem;
-      color: #bfcfff;
+      color: #ffd700;
       margin-bottom: 18px;
       text-align: center;
-      text-shadow: 0 2px 18px #af354d;
+      text-shadow: 0 2px 18px #a62c2a;
     }
     .stat-group {
       display: flex;
@@ -163,93 +178,158 @@
       justify-content: center;
     }
     .stat-card {
-      background: linear-gradient(135deg,#3751a0 0%,#ffd700 100%);
-      border: 2px solid #bfcfff;
+      background: #ffd700;
+      border: 2px solid #a62c2a;
       border-radius: 14px;
-      color: #232d47;
+      color: #a62c2a;
       font-size: 1.1rem;
       font-family: 'MedievalSharp', cursive;
       padding: 14px 22px;
-      box-shadow: 0 2px 10px #5979af55;
+      box-shadow: 0 2px 10px #a62c2a55;
       min-width: 160px;
       text-align: center;
+      font-weight: bold;
     }
-    /* Character Sheet panel uses blue background */
-    #profile-section.panel { background: rgba(40,55,87,0.18);}
-    /* Skills panel uses slightly brighter blue */
-    #skills-section.panel { background: rgba(56,73,122,0.17);}
-    /* Quest log uses navy background */
-    #quests-section.panel { background: rgba(30,32,50,0.20);}
-    /* Guild Hall uses dark blue background */
-    #contact-section.panel { background: rgba(25,35,52,0.20);}
-    /* Motivation uses black/blue with gold border */
-    #motivation-section.panel { background: rgba(15,20,38,0.24); border:2px solid #ffd700;}
-    .skills-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin-bottom: 6px;
+    /* Skill tree styling */
+    .skill-tree-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 50px;
+      width: 100%;
+      margin-top: 30px;
+      margin-bottom: 20px;
     }
-    .skill-card {
-      background: rgba(56,73,122,0.22);
-      border-radius: 13px;
-      padding: 18px 16px;
-      box-shadow: 0 2px 12px #232d4777;
-      font-family: 'MedievalSharp', cursive;
-      color: #bfcfff;
-      margin-bottom: 8px;
-      transition: box-shadow 0.2s;
-      border:2px solid #3751a0;
+    .skill-tree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 320px;
+      max-width: 400px;
     }
-    .skill-card:hover {
-      box-shadow: 0 2px 18px #bfcfffcc;
-      background: rgba(56,73,122,0.34);
-    }
-    .skill-title {
-      font-size: 1.18rem;
-      margin-bottom: 7px;
-      color: #ffd700;
-    }
-    .xp-bar-bg {
-      background: #232d47;
-      border-radius: 8px;
-      height: 12px;
+    .skill-tree-canvas {
+      background: #1a0f0b;
+      border: 2px solid #ffd700;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      width: 360px;
+      height: 360px;
       position: relative;
-      margin-bottom: 9px;
-      max-width: 160px;
+      box-shadow: 0 2px 18px #a62c2a55;
     }
-    .xp-bar-fill {
-      height: 12px;
-      border-radius: 8px;
-      background: linear-gradient(90deg,#bfcfff 60%,#af354d 100%);
-    }
-    .xp-label {
-      font-size: 0.98rem;
+    .skill-detail {
+      background: #a62c2a;
       color: #ffd700;
-      margin-left: 12px;
+      border-radius: 14px;
+      box-shadow: 0 2px 18px #ffd70088;
+      padding: 24px 28px;
+      min-width: 270px;
+      max-width: 340px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.1rem;
+      position: relative;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      animation: fadeInDetail 0.7s;
+    }
+    @keyframes fadeInDetail {
+      from { opacity: 0; transform: translateY(32px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .skill-detail-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      background: none;
+      border: none;
+      color: #ffd700;
+      font-size: 22px;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .skill-level {
+      font-weight: bold;
+      font-size: 1.1rem;
+      background: #ffd700;
+      color: #a62c2a;
+      padding: 3px 12px;
+      border-radius: 10px;
+      margin-left: 7px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .skill-name {
       font-family: 'MedievalSharp', cursive;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: #ffd700;
+    }
+    .skill-desc {
+      margin-bottom: 12px;
+    }
+    .skill-section-label {
+      font-weight: bold;
+      color: #ffd700;
+      margin-bottom: 3px;
+      margin-top: 10px;
+      font-size: 1.08rem;
+    }
+    .skill-section-content {
+      margin-bottom: 6px;
+      color: #fff2b2;
+    }
+    .badge-list {
+      display: flex;
+      gap: 15px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .badge {
+      display: inline-block;
+      background: #ffd700;
+      color: #a62c2a;
+      border-radius: 12px;
+      font-family: 'MedievalSharp', cursive;
+      font-size: 1rem;
+      padding: 6px 18px;
+      box-shadow: 0 2px 8px #a62c2a88;
+      border: 2px solid #a62c2a;
+      transition: box-shadow 0.2s;
+      font-weight: bold;
+    }
+    .badge:hover {
+      box-shadow: 0 2px 18px #ffd700cc;
+      background: #a62c2a;
+      color: #ffd700;
     }
     .quest-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 22px;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 14px;
     }
     .quest-card {
-      background: linear-gradient(90deg,#232d47 0%,#3751a0 100%);
+      background: #a62c2a;
       border-radius: 13px;
       border: 2px solid #ffd700;
-      color: #bfcfff;
+      color: #ffd700;
       font-family: 'MedievalSharp', cursive;
-      box-shadow: 0 2px 12px #232d4777;
+      box-shadow: 0 2px 12px #a62c2a77;
       padding: 18px 20px;
       margin-bottom: 8px;
       position: relative;
       transition: box-shadow 0.2s, background 0.2s;
       cursor: pointer;
+      min-width: 200px;
     }
     .quest-card:hover {
-      background: linear-gradient(90deg,#af354d 0%,#ffd700 100%);
-      color: #232d47;
+      background: #ffd700;
+      color: #a62c2a;
       box-shadow: 0 4px 22px #ffd700bb;
     }
     .quest-title {
@@ -261,13 +341,14 @@
     .quest-company {
       font-size: 0.97rem;
       margin-bottom: 7px;
-      color: #bfcfff;
+      color: #ffd700;
     }
     .quest-details {
       font-size: 0.96rem;
       margin-bottom: 7px;
       display: none;
       animation: fadeInPanel 0.5s;
+      color: #fff2b2;
     }
     .quest-card.active .quest-details {
       display: block;
@@ -284,7 +365,7 @@
       z-index: 2;
     }
     .quest-card.active .expand-btn {
-      color: #af354d;
+      color: #a62c2a;
     }
     .contact-group, .lang-group {
       display: flex;
@@ -292,6 +373,7 @@
       gap: 14px;
       align-items: flex-start;
       margin-bottom: 14px;
+      color: #ffd700;
     }
     .contact-label, .lang-label {
       font-weight: bold;
@@ -299,35 +381,11 @@
       font-family: 'MedievalSharp', cursive;
     }
     .contact-link {
-      color: #bfcfff;
+      color: #ffd700;
       text-decoration: none;
     }
     .contact-link:hover {
-      color: #ffd700;
-    }
-    .badge-list {
-      display: flex;
-      gap: 15px;
-      margin-top: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .badge {
-      display: inline-block;
-      background: linear-gradient(90deg,#bfcfff 60%,#af354d 100%);
-      color: #232d47;
-      border-radius: 12px;
-      font-family: 'MedievalSharp', cursive;
-      font-size: 1rem;
-      padding: 6px 18px;
-      box-shadow: 0 2px 8px #5979af88;
-      border: 2px solid #232d47;
-      transition: box-shadow 0.2s;
-    }
-    .badge:hover {
-      box-shadow: 0 2px 18px #bfcfffcc;
-      background: linear-gradient(90deg,#af354d 60%,#ffd700 100%);
-      color: #ffd700;
+      color: #a62c2a;
     }
     @media (max-width: 1100px) {
       .panel, .main-content {
@@ -337,6 +395,13 @@
       .skills-list, .quest-list {
         grid-template-columns: 1fr;
       }
+      .skill-tree-canvas {
+        width: 98vw;
+        height: 300px;
+      }
+      .skill-detail {
+        max-width: 98vw;
+      }
     }
     @media (max-width: 700px) {
       .nav {padding: 0 2vw;}
@@ -344,11 +409,15 @@
       .hero-subtitle {font-size:1.1rem;}
       .panel {padding: 16px 2vw;}
       .stat-group {flex-direction:column; gap:12px;}
+      .skill-tree-canvas {width:95vw;}
+      .skill-detail {padding:14px 8px; font-size:1rem;}
+      .skill-tree-container {flex-direction:column; align-items:center;}
+      .quest-list {grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
-  <!-- Background image and overlay now in their own container, under all content -->
+  <!-- Background image and overlay under all content -->
   <div class="background-holder">
     <img src="https://cdnb.artstation.com/p/assets/images/images/045/541/254/large/anna-koutsidou-dragon-rider-final.jpg?1643144948" alt="Fantasy Dragon" class="hero-bg"/>
     <div class="hero-overlay"></div>
@@ -367,7 +436,7 @@
   </nav>
   <!-- Hero Section -->
   <section id="hero-section" class="hero">
-    <div>
+    <div class="hero-content">
       <div class="hero-title">Dragon & Slayer</div>
       <div class="hero-subtitle">Anne Sofie Mikkelsen – Product Manager & Dragon Tamer</div>
       <button class="hero-cta" onclick="showSection('profile')">View My Character Sheet</button>
@@ -378,7 +447,7 @@
     <!-- Character Sheet Panel -->
     <section id="profile-section" class="panel" style="display:none;">
       <div class="section-title">Character Sheet</div>
-      <div>
+      <div style="text-align:center; margin-bottom:20px;">
         Data-driven product strategist with creative approach and gaming passion.<br/>
         Experienced coordinator with strong analytical background and passion for creative solutions.<br/>
         Specialist in market understanding, data analysis, and cross-functional collaboration with motivation for product development within gaming and collectibles.<br/>
@@ -393,49 +462,31 @@
     <!-- Skills Panel -->
     <section id="skills-section" class="panel" style="display:none;">
       <div class="section-title">Skill Tree</div>
-      <div class="skills-list">
-        <div class="skill-card">
-          <div class="skill-title">Market Analysis</div>
-          <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:95%"></div></div>
-          <span class="xp-label">Lv. 5 – Boss</span>
+      <div class="skill-tree-container">
+        <div class="skill-tree">
+          <canvas id="skillTreeCanvas" class="skill-tree-canvas" width="360" height="360"></canvas>
         </div>
-        <div class="skill-card">
-          <div class="skill-title">Data Analysis</div>
-          <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:80%"></div></div>
-          <span class="xp-label">Lv. 4 – Pro</span>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Cross-functional Collaboration</div>
-          <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:95%"></div></div>
-          <span class="xp-label">Lv. 5 – Boss</span>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Creative Communication</div>
-          <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:80%"></div></div>
-          <span class="xp-label">Lv. 4 – Pro</span>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Product Development</div>
-          <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:60%"></div></div>
-          <span class="xp-label">Lv. 3 – Competent</span>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Business Cases</div>
-          <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:60%"></div></div>
-          <span class="xp-label">Lv. 3 – Competent</span>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Performance Tracking</div>
-          <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:60%"></div></div>
-          <span class="xp-label">Lv. 3 – Competent</span>
-        </div>
-        <div class="skill-card">
-          <div class="skill-title">Gaming Community Insight</div>
-          <div class="xp-bar-bg"><div class="xp-bar-fill" style="width:100%"></div></div>
-          <span class="xp-label">Lv. 5 – Boss</span>
+        <div>
+          <div id="skillDetail" class="skill-detail" style="display:none;">
+            <button class="skill-detail-close" onclick="closeSkillDetail()">&times;</button>
+            <div class="skill-name" id="skillDetailName"></div>
+            <span class="skill-level" id="skillDetailLevel"></span>
+            <div class="skill-desc" id="skillDetailDesc"></div>
+            <div class="skill-section-label">What Dragon Shield needs:</div>
+            <div class="skill-section-content" id="skillDetailNeeds"></div>
+            <div class="skill-section-label">How I can contribute:</div>
+            <div class="skill-section-content" id="skillDetailContrib"></div>
+          </div>
         </div>
       </div>
-      <div class="badge-list">
+      <div style="text-align:center; margin: 22px 0 0 0;">
+        <span class="badge">Lv. 1: Novice</span>
+        <span class="badge">Lv. 2: Apprentice</span>
+        <span class="badge">Lv. 3: Adept</span>
+        <span class="badge">Lv. 4: Master</span>
+        <span class="badge">Lv. 5: Legendary</span>
+      </div>
+      <div class="badge-list" style="margin-top:18px;">
         <span class="badge">Data Wizard</span>
         <span class="badge">Team Strategist</span>
         <span class="badge">Creative Communicator</span>
@@ -455,7 +506,7 @@
             Built business cases using sales data and market trends for strategic decisions.<br/>
             Facilitated collaboration between design, marketing and sales teams.<br/>
             Managed and trained student worker while maintaining oversight of all brand operations.<br/>
-            <span style="color:#ffd700;">PM-relevant: Responsibility for 50+ brand portfolio, ensuring consistent updates and compliance across all accounts. Helped analyze market performance for strategic decisions.</span>
+            <span style="color:#fff2b2;">PM-relevant: Responsibility for 50+ brand portfolio, ensuring consistent updates and compliance across all accounts. Helped analyze market performance for strategic decisions.</span>
           </div>
         </div>
         <div class="quest-card" onclick="toggleQuest(this)">
@@ -466,7 +517,7 @@
             Developed content and newsletters with focus on sustainable products.<br/>
             Worked with storytelling and communication around environmentally conscious values.<br/>
             Contributed to brand's visual expression and marketing materials.<br/>
-            <span style="color:#ffd700;">PM-relevant: Developed content strategies and storytelling around sustainable products, learning to communicate complex environmental values in ways that resonate with audiences.</span>
+            <span style="color:#fff2b2;">PM-relevant: Developed content strategies and storytelling around sustainable products, learning to communicate complex environmental values in ways that resonate with audiences.</span>
           </div>
         </div>
         <div class="quest-card" onclick="toggleQuest(this)">
@@ -476,7 +527,7 @@
           <div class="quest-details">
             Gathered market insights through data analysis and customer feedback for assortment optimization.<br/>
             Coordinated development projects between purchasing, marketing and supply chain teams.<br/>
-            <span style="color:#ffd700;">PM-relevant: Tracked seasonal product performance and adjusted roadmap based on real-time sales data — core competency for post-launch tracking and roadmap adjustment.</span>
+            <span style="color:#fff2b2;">PM-relevant: Tracked seasonal product performance and adjusted roadmap based on real-time sales data — core competency for post-launch tracking and roadmap adjustment.</span>
           </div>
         </div>
       </div>
@@ -503,7 +554,7 @@
     <!-- Motivation Panel -->
     <section id="motivation-section" class="panel" style="display:none;">
       <div class="section-title">Epic Motivation</div>
-      <div>
+      <div style="text-align:center;">
         Why I'm passionate about joining Dragon Shield as a Product Manager and how my gaming background aligns with the company's mission.<br/><br/>
         I've worked in fashion for years, which taught me a lot about aesthetics and understanding what people want. But let's be honest — trying to explain why I spend my evenings grinding raids in WoW or debating the best magic systems in fantasy novels has always been more fun.<br/><br/>
         I'm the person who will drag you into a 30-minute debate about Harry Potter vs. Star Wars vs. Lord of The Rings, and I'll probably win because I've thought about it way too much.<br/><br/>
@@ -520,26 +571,189 @@
     </section>
   </main>
   <script>
+    // Navigation logic
     function showSection(section, btn) {
       // Hide hero, all panels
       document.getElementById('hero-section').style.display = (section === 'hero') ? 'flex' : 'none';
       ['profile','skills','quests','contact','motivation'].forEach(s => {
-        document.getElementById(s+'-section').style.display = (s===section) ? 'block' : 'none';
+        document.getElementById(s+'-section').style.display = (s===section) ? 'flex' : 'none';
       });
       // Set active menu button
       document.querySelectorAll('.menu-btn').forEach(b=>b.classList.remove('active'));
       if (btn && btn.classList) btn.classList.add('active');
       else {
-        // If called from CTA, activate Character Sheet
         document.querySelectorAll('.menu-btn')[1].classList.add('active');
       }
       window.scrollTo({top:0,behavior:'smooth'});
+      closeSkillDetail();
     }
+    // Quest card expand/collapse
     function toggleQuest(card) {
       card.classList.toggle('active');
       var btn = card.querySelector('.expand-btn');
       if(btn) btn.textContent = card.classList.contains('active') ? '▲' : '▼';
     }
+    // WoW-style skill tree
+    const skills = [
+      {
+        name: "Market Analysis",
+        level: 5,
+        description: "Deep understanding of market trends and customer behavior through work with international brands.",
+        needsDescription: "Ability to analyze market trends and understand player needs and passion.",
+        contribution: "Experience working with 50+ brands analyzing different market segments. Broad insight into international markets and customer behavior."
+      },
+      {
+        name: "Data Analysis",
+        level: 4,
+        description: "Strong analytical approach with experience analyzing complex datasets and market trends.",
+        needsDescription: "Ability to gather insights through surveys, data platforms and customer feedback.",
+        contribution: "Experience with sales data analysis and market trends from both Adjutant and Salling. Excel skills for advanced data processing."
+      },
+      {
+        name: "Cross-functional Collaboration",
+        level: 5,
+        description: "Experienced coordinator with strong communication skills across functions and seniority levels.",
+        needsDescription: "Coordination between design, sales, marketing and supply chain.",
+        contribution: "Proven experience as liaison between teams and stakeholders. Good at ensuring communication and progress across organizations."
+      },
+      {
+        name: "Creative Communication",
+        level: 4,
+        description: "Strong creative background with experience in storytelling and brand communication.",
+        needsDescription: "Ability to present product concepts creatively and inspiringly.",
+        contribution: "Creative background from work with Sofie Ladefoged and passion for design. Ability to communicate complex ideas visually and engagingly."
+      },
+      {
+        name: "Product Development",
+        level: 3,
+        description: "Developing understanding of product processes through project management course and transferable skills.",
+        needsDescription: "Systematic product development from concept to marketing.",
+        contribution: "Experience coordinating development across teams and translating market data into strategic decisions. Currently building formal PM skills through coursework."
+      },
+      {
+        name: "Business Cases",
+        level: 3,
+        description: "Basic business understanding developing through project management course and practical experience.",
+        needsDescription: "Ability to build business cases and present product pitches convincingly.",
+        contribution: "Structured approach to analysis and ongoing project management course provides insight into business case development. Strong motivation to develop this competency."
+      },
+      {
+        name: "Performance Tracking",
+        level: 3,
+        description: "Development area with experience in basic performance measurement and optimization.",
+        needsDescription: "Systematic tracking of product performance post-launch and roadmap adjustment.",
+        contribution: "Experience with sales analysis and process optimization. Structured approach to goal setting and strong motivation to learn advanced performance tracking."
+      },
+      {
+        name: "Gaming Community Insight",
+        level: 5,
+        description: "Genuine gaming enthusiast with broad experience across platforms and genres - from World of Warcraft to modern console gaming.",
+        needsDescription: "Understanding of what drives gaming enthusiasts and collectors.",
+        contribution: "Personal gaming experience from MMO raids to console gaming provides authentic insight into gaming community needs, player psychology and what creates passion for gaming."
+      }
+    ];
+    // Draw skill tree on canvas WoW-style radial
+    function drawSkillTree() {
+      const canvas = document.getElementById('skillTreeCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      const cx = canvas.width/2, cy = canvas.height/2;
+      const radius = 120;
+      // Draw connecting lines
+      for (let i=0; i<skills.length; i++) {
+        const angle = (i/skills.length)*2*Math.PI - Math.PI/2;
+        const x = cx + Math.cos(angle)*radius;
+        const y = cy + Math.sin(angle)*radius;
+        ctx.strokeStyle = "#ffd700";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(cx,cy);
+        ctx.lineTo(x,y);
+        ctx.stroke();
+      }
+      // Draw skill nodes
+      for (let i=0; i<skills.length; i++) {
+        const skill = skills[i];
+        const angle = (i/skills.length)*2*Math.PI - Math.PI/2;
+        const x = cx + Math.cos(angle)*radius;
+        const y = cy + Math.sin(angle)*radius;
+        ctx.beginPath();
+        ctx.arc(x, y, 26, 0, 2*Math.PI);
+        ctx.fillStyle = skill.level >= 4 ? "#ffd700" : "#a62c2a";
+        ctx.shadowColor = skill.level >= 4 ? "#ffd700" : "#a62c2a";
+        ctx.shadowBlur = 10;
+        ctx.strokeStyle = "#fff";
+        ctx.lineWidth = 3;
+        ctx.fill();
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+        // Skill icon/initial
+        ctx.fillStyle = skill.level >= 4 ? "#a62c2a" : "#ffd700";
+        ctx.font = "bold 22px MedievalSharp, Arial";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(skill.name.split(' ')[0][0], x, y);
+      }
+      // Draw skill labels
+      for (let i=0; i<skills.length; i++) {
+        const skill = skills[i];
+        const angle = (i/skills.length)*2*Math.PI - Math.PI/2;
+        const x = cx + Math.cos(angle)*radius;
+        const y = cy + Math.sin(angle)*radius;
+        const lx = cx + Math.cos(angle)*(radius+42);
+        const ly = cy + Math.sin(angle)*(radius+42);
+        ctx.font = "bold 13px MedievalSharp, Arial";
+        ctx.fillStyle = "#ffd700";
+        ctx.textAlign = lx>cx ? "left" : "right";
+        ctx.textBaseline = "middle";
+        ctx.fillText(skill.name, lx, ly);
+      }
+      // Click logic
+      canvas.onclick = function(e) {
+        const rect = canvas.getBoundingClientRect();
+        const mx = e.clientX-rect.left, my = e.clientY-rect.top;
+        for (let i=0; i<skills.length; i++) {
+          const angle = (i/skills.length)*2*Math.PI - Math.PI/2;
+          const x = cx + Math.cos(angle)*radius;
+          const y = cy + Math.sin(angle)*radius;
+          if (Math.hypot(mx-x, my-y)<26) {
+            showSkillDetail(i);
+            break;
+          }
+        }
+      }
+    }
+    // Show skill details
+    function showSkillDetail(idx) {
+      const skill = skills[idx];
+      document.getElementById('skillDetailName').textContent = skill.name;
+      document.getElementById('skillDetailLevel').textContent = `Level ${skill.level} (${["Novice","Apprentice","Adept","Master","Legendary"][skill.level-1]})`;
+      document.getElementById('skillDetailDesc').textContent = skill.description;
+      document.getElementById('skillDetailNeeds').textContent = skill.needsDescription;
+      document.getElementById('skillDetailContrib').textContent = skill.contribution;
+      document.getElementById('skillDetail').style.display = 'block';
+    }
+    function closeSkillDetail() {
+      document.getElementById('skillDetail').style.display = 'none';
+    }
+    document.addEventListener('DOMContentLoaded',drawSkillTree);
+    // Redraw on panel show
+    function redrawOnShow() {
+      if (document.getElementById('skills-section').style.display === 'flex') {
+        drawSkillTree();
+      }
+    }
+    // Ensure redraw on nav
+    document.querySelectorAll('.menu-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        setTimeout(redrawOnShow,120);
+      });
+    });
+    // Redraw if activated from CTA
+    document.querySelector('.hero-cta').addEventListener('click', ()=>{
+      setTimeout(redrawOnShow,120);
+    });
   </script>
 </body>
 </html>
