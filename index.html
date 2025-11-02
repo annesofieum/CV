@@ -56,7 +56,6 @@
       color: #c2b280;
       letter-spacing: 2px;
       text-shadow: 0 2px 12px #8c4444;
-      font-family: 'MedievalSharp', cursive;
     }
     .menu {
       display: flex;
@@ -120,7 +119,6 @@
       margin-bottom: 18px;
       text-align: center;
       text-shadow: 0 2px 18px #8c4444;
-      font-family: 'MedievalSharp', cursive;
     }
     .stat-group {
       display: flex;
@@ -216,10 +214,11 @@
       border: 2px solid #c2b280;
       border-radius: 18px;
       margin-bottom: 20px;
-      width: 700px;
+      width: 900px;
       height: 700px;
       position: relative;
       box-shadow: 0 2px 18px #8c444422;
+      margin-top: 32px;
     }
     .skill-detail {
       background: #2b1d14;
@@ -320,17 +319,17 @@
       flex-direction: column;
       gap: 48px;
       align-items: center;
-      max-width: 1050px;
+      max-width: 1200px;
     }
     .quest-card {
       background: #f8edd6;
       border-radius: 22px;
       border: 5px solid #c2b280;
       box-shadow: 0 4px 32px #8c444422;
-      padding: 38px 54px 32px 54px;
+      padding: 38px 80px 32px 80px;
       color: #8c4444;
       font-family: 'Montserrat', Arial, sans-serif;
-      max-width: 900px;
+      max-width: 1100px;
       position: relative;
       margin: 0 auto;
       transition: box-shadow 0.2s, background 0.2s;
@@ -339,7 +338,7 @@
       flex-direction: column;
       gap: 12px;
       cursor: pointer;
-      border-image: url('https://www.heropatterns.com/static/img/dragon-scale.svg') 20 round;
+      border-image: none;
     }
     .quest-card:hover {
       background: #f6e1c7;
@@ -386,7 +385,7 @@
     .quest-reward {
       position: absolute;
       top: 24px;
-      right: 54px;
+      right: 80px;
       font-size: 1.25rem;
       color: #c2b280;
       font-family: 'MedievalSharp', cursive;
@@ -399,7 +398,7 @@
     .quest-status {
       position: absolute;
       bottom: 20px;
-      right: 54px;
+      right: 80px;
       color: #8c4444;
       font-size: 1.05rem;
       font-family: 'MedievalSharp', cursive;
@@ -424,45 +423,23 @@
     .quest-card.active .quest-expand {
       color: #c2b280;
     }
-    .contact-group, .lang-group {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      align-items: flex-start;
-      margin-bottom: 14px;
-      color: #c2b280;
-      font-family: 'Montserrat', Arial, sans-serif;
-    }
-    .contact-label, .lang-label {
-      font-weight: bold;
-      color: #c2b280;
-      font-family: 'MedievalSharp', cursive;
-    }
-    .contact-link {
-      color: #c2b280;
-      text-decoration: none;
-      font-family: 'Montserrat', Arial, sans-serif;
-    }
-    .contact-link:hover {
-      color: #8c4444;
-    }
-    @media (max-width: 1200px) {
+    @media (max-width: 1400px) {
       .panel, .main-content, .quest-journal {
         padding: 20px 2vw;
         max-width: 100vw;
       }
       .skill-tree-canvas {
-        width: 90vw;
-        height: 90vw;
-        max-width: 700px;
+        width: 98vw;
+        height: 70vw;
+        max-width: 900px;
         max-height: 700px;
       }
       .quest-card {
         max-width: 98vw;
-        padding: 30px 12vw 28px 12vw;
+        padding: 30px 8vw 28px 8vw;
       }
       .quest-reward, .quest-status {
-        right: 8vw;
+        right: 5vw;
       }
     }
     @media (max-width: 900px) {
@@ -470,8 +447,8 @@
       .hero-headline {font-size:2rem;}
       .hero-intro {font-size:1rem;}
       .skill-detail {padding:14px 8px; font-size:1rem;}
-      .quest-card {padding: 22px 4vw 18px 4vw;}
-      .quest-reward, .quest-status {right: 4vw;}
+      .quest-card {padding: 22px 3vw 18px 3vw;}
+      .quest-reward, .quest-status {right: 3vw;}
     }
     @media (max-width: 700px) {
       .nav {padding: 0 2vw;}
@@ -535,7 +512,7 @@
       <div class="section-title">Skill Tree</div>
       <div class="skill-tree-container">
         <div class="skill-tree">
-          <canvas id="skillTreeCanvas" class="skill-tree-canvas" width="700" height="700"></canvas>
+          <canvas id="skillTreeCanvas" class="skill-tree-canvas" width="900" height="700"></canvas>
         </div>
         <div>
           <div id="skillDetail" class="skill-detail" style="display:none;">
@@ -738,25 +715,26 @@
       }
     ];
 
-    // Draw skill tree on canvas WoW-style vertical branches, spaced out
+    // Draw skill tree on canvas: spaced nodes, muted colors, readable
     function drawSkillTree() {
       const canvas = document.getElementById('skillTreeCanvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       ctx.clearRect(0,0,canvas.width,canvas.height);
       const cx = canvas.width/2;
-      const topY = 110;
-      const nodeSpacingY = 70;
-      // Layout: 1 top, 2 below, 2 below, 3 at bottom (branching)
+      const topY = 100;
+      const nodeSpacingY = 100;
+      const nodeSpacingX = 200;
+      // Layout: 1 top, 2 below, 2 below, 3 at bottom (branching, spaced)
       const nodePos = [
         {x:cx, y:topY}, // Market Analysis
-        {x:cx-180, y:topY+nodeSpacingY*2}, // Data Analysis
-        {x:cx+180, y:topY+nodeSpacingY*2}, // Cross-functional
-        {x:cx-130, y:topY+nodeSpacingY*4}, // Creative Comm
-        {x:cx+130, y:topY+nodeSpacingY*4}, // Product Dev
-        {x:cx-220, y:topY+nodeSpacingY*6}, // Business Cases
-        {x:cx, y:topY+nodeSpacingY*6}, // Performance Tracking
-        {x:cx+220, y:topY+nodeSpacingY*6} // Gaming Community
+        {x:cx-nodeSpacingX, y:topY+nodeSpacingY*1.2}, // Data Analysis
+        {x:cx+nodeSpacingX, y:topY+nodeSpacingY*1.2}, // Cross-functional
+        {x:cx-nodeSpacingX/1.4, y:topY+nodeSpacingY*2.3}, // Creative Comm
+        {x:cx+nodeSpacingX/1.4, y:topY+nodeSpacingY*2.3}, // Product Dev
+        {x:cx-nodeSpacingX*1.1, y:topY+nodeSpacingY*3.4}, // Business Cases
+        {x:cx, y:topY+nodeSpacingY*3.4}, // Performance Tracking
+        {x:cx+nodeSpacingX*1.1, y:topY+nodeSpacingY*3.4} // Gaming Community
       ];
       // Connections
       const lines = [
@@ -781,7 +759,7 @@
         const skill = skills[i];
         const pos = nodePos[i];
         ctx.beginPath();
-        ctx.arc(pos.x,pos.y,38,0,2*Math.PI);
+        ctx.arc(pos.x,pos.y,44,0,2*Math.PI);
         ctx.fillStyle = skill.level >= 4 ? "#c2b280" : "#8c4444";
         ctx.strokeStyle = "#b4aa89";
         ctx.lineWidth = 6;
@@ -790,28 +768,34 @@
         ctx.fill();
         ctx.stroke();
         ctx.shadowBlur = 0;
-        // Node icon/initial (dragon/shield/sword/scroll)
+        // Node icon
         let icon = "🐉";
         if (i === 0) icon = "🐉";
         else if (i === 1 || i === 2) icon = "🛡️";
         else if (i === 3 || i === 4) icon = "🗡️";
         else if (i === 5 || i === 6) icon = "📜";
         else if (i === 7) icon = "🐉";
-        ctx.font = "38px serif";
+        ctx.font = "44px serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = skill.level >= 4 ? "#8c4444" : "#c2b280";
         ctx.fillText(icon, pos.x, pos.y);
-      }
-      // Draw labels
-      for(let i=0;i<skills.length;i++){
-        const skill = skills[i];
-        const pos = nodePos[i];
+        // Draw label below node, word-wrap if necessary
         ctx.font = "bold 19px 'Montserrat', Arial";
         ctx.fillStyle = "#b4aa89";
         ctx.textAlign = "center";
         ctx.textBaseline = "top";
-        ctx.fillText(skill.name, pos.x, pos.y+44);
+        let label = skill.name;
+        // If label is long, split it
+        if (label.length > 22) {
+          let words = label.split(" ");
+          let mid = Math.floor(words.length/2);
+          label = words.slice(0,mid).join(" ") + "\n" + words.slice(mid).join(" ");
+        }
+        let lines = label.split("\n");
+        for(let l=0;l<lines.length;l++) {
+          ctx.fillText(lines[l], pos.x, pos.y+54+l*22);
+        }
       }
       // Click logic
       canvas.onclick = function(e){
@@ -819,7 +803,7 @@
         const mx = e.clientX-rect.left, my = e.clientY-rect.top;
         for(let i=0;i<skills.length;i++){
           const pos = nodePos[i];
-          if(Math.hypot(mx-pos.x, my-pos.y)<38){
+          if(Math.hypot(mx-pos.x, my-pos.y)<44){
             showSkillDetail(i);
             break;
           }
