@@ -11,7 +11,7 @@
       padding: 0;
       min-height: 100vh;
       font-family: 'Montserrat', Arial, sans-serif;
-      background: #18120f;
+      background: #19140f;
       overflow-x: hidden;
     }
     .background-holder {
@@ -28,14 +28,14 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      filter: blur(2px) brightness(0.6) grayscale(0.4);
+      filter: blur(2px) brightness(0.5) grayscale(0.4);
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(24,18,15,0.96);
+      background: rgba(24,18,15,0.97);
       pointer-events: none;
     }
     .nav {
@@ -56,15 +56,16 @@
       color: #ffd700;
       letter-spacing: 2px;
       text-shadow: 0 2px 12px #a62c2a;
+      font-family: 'MedievalSharp', cursive;
     }
     .menu {
       display: flex;
       gap: 24px;
+      font-family: 'MedievalSharp', cursive;
     }
     .menu-btn {
       background: none;
       border: none;
-      font-family: inherit;
       font-size: 1.08rem;
       color: #ffd700;
       padding: 8px 18px;
@@ -96,8 +97,8 @@
       box-shadow: 0 4px 32px #a62c2a33;
       max-width: 900px;
       min-width: 330px;
-      margin: 0 auto;
-      padding: 48px 38px;
+      margin: 40px auto 40px auto;
+      padding: 58px 38px;
       color: #e6d9b1;
       font-size: 1.15rem;
       display: flex;
@@ -106,6 +107,7 @@
       justify-content: center;
       min-height: 60vh;
       animation: fadeInPanel 1s;
+      gap: 28px;
     }
     @keyframes fadeInPanel {
       from { opacity: 0; transform: translateY(60px);}
@@ -118,6 +120,7 @@
       margin-bottom: 18px;
       text-align: center;
       text-shadow: 0 2px 18px #a62c2a;
+      font-family: 'MedievalSharp', cursive;
     }
     .stat-group {
       display: flex;
@@ -139,6 +142,57 @@
       text-align: center;
       font-weight: bold;
     }
+    /* HERO FRONT PAGE */
+    .hero-front {
+      width: 100vw;
+      height: calc(100vh - 70px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 3;
+      position: relative;
+      margin-top: 70px;
+    }
+    .hero-headline {
+      font-family: 'MedievalSharp', cursive;
+      font-size: 3.8rem;
+      color: #ffd700;
+      text-shadow: 0 3px 26px #a62c2a, 0 0 8px #fff;
+      margin-bottom: 18px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+    .hero-intro {
+      font-family: 'Montserrat', Arial, sans-serif;
+      font-size: 1.3rem;
+      color: #e6d9b1;
+      background: rgba(30,18,12,0.8);
+      border-radius: 18px;
+      padding: 18px 38px;
+      margin-bottom: 28px;
+      text-align: center;
+      box-shadow: 0 2px 22px #a62c2a33;
+    }
+    .hero-btn {
+      padding: 16px 40px;
+      font-size: 1.4rem;
+      font-family: 'MedievalSharp', cursive;
+      background: #ffd700;
+      color: #a62c2a;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 2px 14px #a62c2a55;
+      cursor: pointer;
+      transition: background 0.22s, color 0.22s, box-shadow 0.22s;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+    .hero-btn:hover {
+      background: #a62c2a;
+      color: #ffd700;
+      box-shadow: 0 2px 22px #ffd700bb;
+    }
     /* Skill tree styling */
     .skill-tree-container {
       display: flex;
@@ -158,7 +212,7 @@
       max-width: 400px;
     }
     .skill-tree-canvas {
-      background: #18120f;
+      background: #19140f;
       border: 2px solid #ffd700;
       border-radius: 18px;
       margin-bottom: 20px;
@@ -218,6 +272,7 @@
     .skill-desc {
       margin-bottom: 12px;
       color: #e6d9b1;
+      font-family: 'Montserrat', Arial, sans-serif;
     }
     .skill-section-label {
       font-weight: bold;
@@ -225,10 +280,12 @@
       margin-bottom: 3px;
       margin-top: 10px;
       font-size: 1.08rem;
+      font-family: 'Montserrat', Arial, sans-serif;
     }
     .skill-section-content {
       margin-bottom: 6px;
       color: #e6d9b1;
+      font-family: 'Montserrat', Arial, sans-serif;
     }
     .badge-list {
       display: flex;
@@ -255,68 +312,89 @@
       background: #a62c2a;
       color: #ffd700;
     }
-    .quest-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
+    /* Fantasy Quest Log */
+    .quest-journal {
       width: 100%;
-      justify-content: center;
-      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      align-items: center;
     }
     .quest-card {
-      background: #312118;
-      border-radius: 13px;
-      border: 2px solid #ffd700;
-      color: #ffd700;
-      font-family: 'MedievalSharp', cursive;
-      box-shadow: 0 2px 12px #a62c2a22;
-      padding: 18px 20px;
-      margin-bottom: 8px;
-      position: relative;
-      transition: box-shadow 0.2s, background 0.2s;
-      cursor: pointer;
-      min-width: 200px;
-    }
-    .quest-card:hover {
-      background: #ffd700;
+      background: #f8edd6 url('https://svgur.com/i/uiY.svg') repeat;
+      border-radius: 18px;
+      border: 4px solid #ffd700;
+      box-shadow: 0 4px 22px #a62c2a22;
+      padding: 26px 32px 20px 32px;
       color: #a62c2a;
-      box-shadow: 0 4px 22px #ffd700bb;
+      font-family: 'Montserrat', Arial, sans-serif;
+      max-width: 600px;
+      position: relative;
+      margin: 0 auto;
+      transition: box-shadow 0.2s, background 0.2s;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .quest-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+    .quest-icon {
+      font-size: 2.2rem;
+      margin-right: 6px;
     }
     .quest-title {
-      font-size: 1.18rem;
+      font-family: 'MedievalSharp', cursive;
+      font-size: 1.33rem;
+      color: #a62c2a;
       font-weight: bold;
-      color: #ffd700;
-      margin-bottom: 6px;
+      margin-bottom: 2px;
     }
     .quest-company {
-      font-size: 0.97rem;
-      margin-bottom: 7px;
-      color: #ffd700;
+      font-size: 1.01rem;
+      color: #a62c2a;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin-bottom: 4px;
     }
     .quest-details {
-      font-size: 0.96rem;
-      margin-bottom: 7px;
-      display: none;
-      animation: fadeInPanel 0.5s;
-      color: #e6d9b1;
+      font-size: 1.02rem;
+      color: #5b3f30;
+      background: rgba(255,255,255,0.74);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin-bottom: 2px;
     }
-    .quest-card.active .quest-details {
-      display: block;
-    }
-    .quest-card .expand-btn {
+    .quest-reward {
       position: absolute;
-      top: 12px; right: 18px;
-      font-size: 16px;
+      top: 14px;
+      right: 30px;
+      font-size: 1.3rem;
       color: #ffd700;
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: color 0.2s;
-      z-index: 2;
+      font-family: 'MedievalSharp', cursive;
+      background: #a62c2a;
+      border-radius: 10px;
+      padding: 2px 16px;
+      box-shadow: 0 2px 10px #ffd70033;
+      border: 2px solid #ffd700;
     }
-    .quest-card.active .expand-btn {
+    .quest-status {
+      position: absolute;
+      bottom: 14px;
+      right: 30px;
       color: #a62c2a;
+      font-size: 1rem;
+      font-family: 'MedievalSharp', cursive;
+      background: #ffd700;
+      border-radius: 10px;
+      padding: 2px 14px;
+      border: 2px solid #a62c2a;
     }
+    /* Contact and Motivation */
     .contact-group, .lang-group {
       display: flex;
       flex-direction: column;
@@ -324,6 +402,7 @@
       align-items: flex-start;
       margin-bottom: 14px;
       color: #ffd700;
+      font-family: 'Montserrat', Arial, sans-serif;
     }
     .contact-label, .lang-label {
       font-weight: bold;
@@ -333,6 +412,7 @@
     .contact-link {
       color: #ffd700;
       text-decoration: none;
+      font-family: 'Montserrat', Arial, sans-serif;
     }
     .contact-link:hover {
       color: #a62c2a;
@@ -342,9 +422,6 @@
         padding: 20px 4vw;
         max-width: 98vw;
       }
-      .skills-list, .quest-list {
-        grid-template-columns: 1fr;
-      }
       .skill-tree-canvas {
         width: 98vw;
         height: 300px;
@@ -352,18 +429,21 @@
       .skill-detail {
         max-width: 98vw;
       }
+      .quest-card {
+        max-width: 98vw;
+      }
     }
     @media (max-width: 700px) {
       .nav {padding: 0 2vw;}
       .section-title {font-size:1.5rem;}
-      .hero-title {font-size:2.1rem;}
-      .hero-subtitle {font-size:1.1rem;}
+      .hero-headline {font-size:2rem;}
+      .hero-intro {font-size:1rem;}
       .panel {padding: 16px 2vw;}
       .stat-group {flex-direction:column; gap:12px;}
       .skill-tree-canvas {width:95vw;}
       .skill-detail {padding:14px 8px; font-size:1rem;}
       .skill-tree-container {flex-direction:column; align-items:center;}
-      .quest-list {grid-template-columns:1fr;}
+      .quest-journal {gap:20px;}
     }
   </style>
 </head>
@@ -373,9 +453,10 @@
     <div class="hero-overlay"></div>
   </div>
   <nav class="nav">
-    <div class="logo">DS</div>
+    <div class="logo">🐉 DS</div>
     <div class="menu">
-      <button class="menu-btn active" onclick="showSection('profile',this)">Character Sheet</button>
+      <button class="menu-btn active" onclick="showSection('hero',this)">Home</button>
+      <button class="menu-btn" onclick="showSection('profile',this)">Character Sheet</button>
       <button class="menu-btn" onclick="showSection('skills',this)">Skill Tree</button>
       <button class="menu-btn" onclick="showSection('quests',this)">Quest Log</button>
       <button class="menu-btn" onclick="showSection('contact',this)">Guild Hall</button>
@@ -383,9 +464,21 @@
     </div>
   </nav>
   <main class="main-content">
-    <section id="profile-section" class="panel" style="display:flex;">
+    <!-- HERO FRONT PAGE -->
+    <section id="hero-section" class="hero-front" style="display:flex;">
+      <div class="hero-headline">Dragon & Slayer</div>
+      <div class="hero-intro">
+        <b>Anne Sofie Mikkelsen</b><br>
+        Product Manager & Dragon Tamer<br>
+        Data-driven strategist, creative communicator, and passionate gamer.<br>
+        Welcome to my fantasy CV adventure!
+      </div>
+      <button class="hero-btn" onclick="showSection('profile')">Begin Your Quest</button>
+    </section>
+    <!-- Character Sheet Panel -->
+    <section id="profile-section" class="panel" style="display:none;">
       <div class="section-title">Character Sheet</div>
-      <div style="text-align:center; margin-bottom:20px;">
+      <div style="text-align:center; margin-bottom:20px; font-family:'Montserrat', Arial, sans-serif;">
         Data-driven product strategist with creative approach and gaming passion.<br/>
         Experienced coordinator with strong analytical background and passion for creative solutions.<br/>
         Specialist in market understanding, data analysis, and cross-functional collaboration with motivation for product development within gaming and collectibles.<br/>
@@ -434,39 +527,60 @@
     <!-- Quest Log Panel -->
     <section id="quests-section" class="panel" style="display:none;">
       <div class="section-title">Quest Log</div>
-      <div class="quest-list">
-        <div class="quest-card" onclick="toggleQuest(this)">
-          <button class="expand-btn">▼</button>
-          <div class="quest-title">Marketplace Manager</div>
-          <div class="quest-company">Adjutant (Mar 2022 – Nov 2024) • High relevance</div>
-          <div class="quest-details">
-            Coordinated back-office for 50+ brands with focus on market timing and positioning.<br/>
-            Built business cases using sales data and market trends for strategic decisions.<br/>
-            Facilitated collaboration between design, marketing and sales teams.<br/>
-            Managed and trained student worker while maintaining oversight of all brand operations.<br/>
-            <span style="color:#e6d9b1;">PM-relevant: Responsibility for 50+ brand portfolio, ensuring consistent updates and compliance across all accounts. Helped analyze market performance for strategic decisions.</span>
+      <div class="quest-journal">
+        <!-- QUEST 1 -->
+        <div class="quest-card">
+          <div class="quest-top">
+            <span class="quest-icon">🛡️</span>
+            <div>
+              <div class="quest-title">Marketplace Manager</div>
+              <div class="quest-company">Adjutant (Mar 2022 – Nov 2024)</div>
+            </div>
           </div>
+          <div class="quest-details">
+            Coordinated back-office for 50+ brands with focus on market timing and positioning.<br>
+            Built business cases using sales data and market trends for strategic decisions.<br>
+            Facilitated collaboration between design, marketing and sales teams.<br>
+            Managed and trained student worker while maintaining oversight of all brand operations.<br>
+            <span style="color:#a62c2a; font-weight:bold;">Portfolio Guardian: Responsibility for 50+ brand portfolio, ensuring updates and compliance across all accounts. Analyzed market performance for strategic decisions.</span>
+          </div>
+          <div class="quest-reward">Reward: 🐉 Dragon Shield XP</div>
+          <div class="quest-status">Completed</div>
         </div>
-        <div class="quest-card" onclick="toggleQuest(this)">
-          <button class="expand-btn">▼</button>
-          <div class="quest-title">Creative Associate</div>
-          <div class="quest-company">Sofie Ladefoged (Jan 2022 – Mar 2022) • Medium relevance</div>
-          <div class="quest-details">
-            Developed content and newsletters with focus on sustainable products.<br/>
-            Worked with storytelling and communication around environmentally conscious values.<br/>
-            Contributed to brand's visual expression and marketing materials.<br/>
-            <span style="color:#e6d9b1;">PM-relevant: Developed content strategies and storytelling around sustainable products, learning to communicate complex environmental values in ways that resonate with audiences.</span>
+        <!-- QUEST 2 -->
+        <div class="quest-card">
+          <div class="quest-top">
+            <span class="quest-icon">🐉</span>
+            <div>
+              <div class="quest-title">Creative Associate</div>
+              <div class="quest-company">Sofie Ladefoged (Jan 2022 – Mar 2022)</div>
+            </div>
           </div>
+          <div class="quest-details">
+            Developed content and newsletters with focus on sustainable products.<br>
+            Worked with storytelling and communication around environmentally conscious values.<br>
+            Contributed to brand's visual expression and marketing materials.<br>
+            <span style="color:#a62c2a; font-weight:bold;">Storyteller: Created engaging narratives for sustainable products, learning to communicate complex values that resonate with audiences.</span>
+          </div>
+          <div class="quest-reward">Reward: 🛡️ Shield of Creativity</div>
+          <div class="quest-status">Completed</div>
         </div>
-        <div class="quest-card" onclick="toggleQuest(this)">
-          <button class="expand-btn">▼</button>
-          <div class="quest-title">Purchasing Intern</div>
-          <div class="quest-company">Salling Group (Aug 2020 – Dec 2020) • Medium relevance</div>
-          <div class="quest-details">
-            Gathered market insights through data analysis and customer feedback for assortment optimization.<br/>
-            Coordinated development projects between purchasing, marketing and supply chain teams.<br/>
-            <span style="color:#e6d9b1;">PM-relevant: Tracked seasonal product performance and adjusted roadmap based on real-time sales data — core competency for post-launch tracking and roadmap adjustment.</span>
+        <!-- QUEST 3 -->
+        <div class="quest-card">
+          <div class="quest-top">
+            <span class="quest-icon">📜</span>
+            <div>
+              <div class="quest-title">Purchasing Intern</div>
+              <div class="quest-company">Salling Group (Aug 2020 – Dec 2020)</div>
+            </div>
           </div>
+          <div class="quest-details">
+            Gathered market insights through data analysis and customer feedback for assortment optimization.<br>
+            Coordinated development projects between purchasing, marketing and supply chain teams.<br>
+            <span style="color:#a62c2a; font-weight:bold;">Tracker: Tracked seasonal product performance and adjusted roadmap based on real-time sales data — core competency for post-launch tracking and roadmap adjustment.</span>
+          </div>
+          <div class="quest-reward">Reward: 🐉 Anima Crystal</div>
+          <div class="quest-status">Completed</div>
         </div>
       </div>
     </section>
@@ -492,7 +606,7 @@
     <!-- Motivation Panel -->
     <section id="motivation-section" class="panel" style="display:none;">
       <div class="section-title">Epic Motivation</div>
-      <div style="text-align:center;">
+      <div style="text-align:center; font-family:'Montserrat', Arial, sans-serif;">
         Why I'm passionate about joining Dragon Shield as a Product Manager and how my gaming background aligns with the company's mission.<br/><br/>
         I've worked in fashion for years, which taught me a lot about aesthetics and understanding what people want. But let's be honest — trying to explain why I spend my evenings grinding raids in WoW or debating the best magic systems in fantasy novels has always been more fun.<br/><br/>
         I'm the person who will drag you into a 30-minute debate about Harry Potter vs. Star Wars vs. Lord of The Rings, and I'll probably win because I've thought about it way too much.<br/><br/>
@@ -511,21 +625,14 @@
   <script>
     // Navigation logic
     function showSection(section, btn) {
-      ['profile','skills','quests','contact','motivation'].forEach(s => {
-        document.getElementById(s+'-section').style.display = (s===section) ? 'flex' : 'none';
+      ['hero','profile','skills','quests','contact','motivation'].forEach(s => {
+        document.getElementById(s+'-section').style.display = (s===section) ? (s==='hero'?'flex':'flex') : 'none';
       });
-      // Set active menu button
       document.querySelectorAll('.menu-btn').forEach(b=>b.classList.remove('active'));
       if (btn && btn.classList) btn.classList.add('active');
       window.scrollTo({top:0,behavior:'smooth'});
       closeSkillDetail();
       if(section === "skills") setTimeout(drawSkillTree,100);
-    }
-    // Quest card expand/collapse
-    function toggleQuest(card) {
-      card.classList.toggle('active');
-      var btn = card.querySelector('.expand-btn');
-      if(btn) btn.textContent = card.classList.contains('active') ? '▲' : '▼';
     }
     // WoW-style skill tree
     const skills = [
@@ -638,18 +745,23 @@
         ctx.fill();
         ctx.stroke();
         ctx.shadowBlur = 0;
-        // Node icon/initial (first letter)
-        ctx.font = "bold 24px MedievalSharp, Arial";
-        ctx.fillStyle = skill.level >= 4 ? "#a62c2a" : "#ffd700";
+        // Node icon/initial (dragon/shield for top, sword/scroll for others)
+        let icon = "🐉";
+        if (i === 0) icon = "🐉";
+        else if (i === 1 || i === 2) icon = "🛡️";
+        else if (i === 3 || i === 4) icon = "🗡️";
+        else if (i === 5 || i === 6) icon = "📜";
+        else if (i === 7) icon = "🐉";
+        ctx.font = "28px serif";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        ctx.fillText(skill.name.split(' ')[0][0], pos.x, pos.y);
+        ctx.fillText(icon, pos.x, pos.y);
       }
       // Draw labels
       for(let i=0;i<skills.length;i++){
         const skill = skills[i];
         const pos = nodePos[i];
-        ctx.font = "bold 16px MedievalSharp, Arial";
+        ctx.font = "bold 16px 'Montserrat', Arial";
         ctx.fillStyle = "#e6d9b1";
         ctx.textAlign = "center";
         ctx.textBaseline = "top";
@@ -682,7 +794,6 @@
       document.getElementById('skillDetail').style.display = 'none';
     }
     document.addEventListener('DOMContentLoaded',drawSkillTree);
-    // Redraw on nav
     document.querySelectorAll('.menu-btn').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         setTimeout(drawSkillTree,120);
