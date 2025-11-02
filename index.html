@@ -246,29 +246,30 @@
       cursor: pointer;
       font-weight: bold;
     }
-    .skill-detail .skill-detail-title {
+    .skill-detail-title {
       font-family: 'MedievalSharp', cursive;
       font-size: 1.25rem;
       color: #e4d8b4;
       font-weight: bold;
       margin-bottom: 4px;
       margin-top: 0;
+      display: block;
     }
-    .skill-detail .skill-detail-level {
+    .skill-detail-level {
       font-weight: bold;
       color: #c2b280;
       display: block;
       margin-bottom: 10px;
       font-size: 1.05rem;
     }
-    .skill-detail .skill-detail-desc {
+    .skill-detail-desc {
       margin-bottom: 16px;
       color: #b4aa89;
       font-family: 'Montserrat', Arial, sans-serif;
       font-size: 1.08rem;
       font-weight: 400;
     }
-    .skill-detail .skill-detail-label {
+    .skill-detail-label {
       font-weight: bold;
       color: #e4d8b4;
       margin-bottom: 4px;
@@ -277,7 +278,7 @@
       font-family: 'Montserrat', Arial, sans-serif;
       display: block;
     }
-    .skill-detail .skill-detail-section {
+    .skill-detail-section {
       margin-bottom: 6px;
       color: #b4aa89;
       font-family: 'Montserrat', Arial, sans-serif;
@@ -411,6 +412,25 @@
     .contact-link:hover {
       color: #8c4444;
     }
+    /* Badges with soft gold borders */
+    .badge {
+      display: inline-block;
+      background: none;
+      color: #c2b280;
+      border: 2.5px solid #e4d8b4;
+      border-radius: 14px;
+      font-family: 'MedievalSharp', cursive;
+      font-size: 1rem;
+      padding: 7px 24px;
+      margin: 0 8px 8px 0;
+      font-weight: bold;
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 0 2px 8px #e4d8b444;
+    }
+    .badge:hover {
+      background: #e4d8b4;
+      color: #8c4444;
+    }
   </style>
 </head>
 <body>
@@ -419,7 +439,7 @@
     <div class="hero-overlay"></div>
   </div>
   <nav class="nav">
-    <div class="logo">DRAGON SHIELD</div>
+    <div class="logo">DRAGON SHIELD APPLICATION</div>
     <div class="menu">
       <button class="menu-btn active" onclick="showSection('hero',this)">Home</button>
       <button class="menu-btn" onclick="showSection('profile',this)">Character Sheet</button>
@@ -439,7 +459,6 @@
         Data-driven strategist, creative communicator, and passionate gamer.<br>
         Welcome to my fantasy CV adventure!
       </div>
-      <!-- Arrow handled by JS globally -->
     </section>
     <!-- Character Sheet Panel -->
     <section id="profile-section" class="panel" style="display:none;">
@@ -466,7 +485,7 @@
         <div>
           <div id="skillDetail" class="skill-detail">
             <button class="skill-detail-close" onclick="closeSkillDetail()">&times;</button>
-            <div class="skill-detail-title" id="skillDetailName"></div>
+            <span class="skill-detail-title" id="skillDetailName"></span>
             <span class="skill-detail-level" id="skillDetailLevel"></span>
             <div class="skill-detail-desc" id="skillDetailDesc"></div>
             <span class="skill-detail-label">What Dragon Shield needs:</span>
@@ -812,4 +831,3 @@
   </script>
 </body>
 </html>
-
